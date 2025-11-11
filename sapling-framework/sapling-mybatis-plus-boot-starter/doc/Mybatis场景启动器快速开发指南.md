@@ -2,7 +2,7 @@
 
 ## 简介
 
-zf-mybatis-spring-boot-starter 基于MyBatis-Plus 3.5.1 进行封装。同样沿袭Mybatis-Plus的思想，**只做增强不做改变，为简化开发、提高效率而生**，使用方式与MyBatis-Plus无异。
+sapling-mybatis-plus-boot-starter 基于MyBatis-Plus 3.5.1 进行封装。同样沿袭Mybatis-Plus的思想，**只做增强不做改变，为简化开发、提高效率而生**，使用方式与MyBatis-Plus无异。
 
 ## 支持数据库
 
@@ -46,7 +46,7 @@ zf-mybatis-spring-boot-starter 基于MyBatis-Plus 3.5.1 进行封装。同样沿
 ```XML
 <dependency>
    <groupId>net.zfsy</groupId>
-   <artifactId>zf-mybatis-spring-boot-starter</artifactId>
+   <artifactId>sapling-mybatis-plus-boot-starter</artifactId>
    <version>${last_update_version}</version>
 </dependency> 
 ```
