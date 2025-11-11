@@ -1,0 +1,2 @@
+org.springframework.boot.env.EnvironmentPostProcessor=\
+ net.zf.module.system.infrastructure.common.framework.configuration.CustomEnvironmentPostProcessor

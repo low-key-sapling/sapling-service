@@ -1,0 +1,16 @@
+spring:
+  redis:
+    client-type: lettuce
+    nodes: 127.0.0.1:7778
+    password: enc`V88xdKEEgU7TKhuHB0t2W3oRV0kvnCja
+    database: 1
+    timeout: 10000
+    # lettuce连接池配置
+    lettuce:
+      pool:
+        max-active: 800     # 并发高时可增大，但不超过 Redis 的 maxclients 限制
+        max-idle: 100        # 避免空闲连接过多占用资源
+        min-idle: 50        # 确保突发请求时有足够连接可用
+        time-between-eviction-runs: 15s  # 定期检测无效连接
+        max-wait: 10s       # 避免线程长时间阻塞
+      shutdown-timeout: 100ms  # 快速关闭，防止停机延迟

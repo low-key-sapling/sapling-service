@@ -1,0 +1,46 @@
+spring:
+  kafka:
+    bootstrap-servers: 127.0.0.1:9888
+    ssl:
+      trust-store-location: file:./jks/client_truststor.jks
+      trust-store-password: enc`4g6kye+Pyfddl5DPrI+cQdtYYk4kvvx8
+    security:
+      protocol: SASL_SSL
+    properties:
+      sasl.mechanism: PLAIN
+      sasl.jaas.config: enc`QDsDQm5lI5aJ7Tq+03ePrii6fR398hHE0BeQSy4wBmUor3PpcXk7t9Lvtw2VEVB5YXHbUTshjFcd8Xl2BBlnH3cJiJXNPPUXzh2K2IvxGevWfez8TyEoTFpvJRcKRH5+ztPvdZEIqjAXqnnGRSGkDQ==
+      ssl.endpoint.identification.algorithm:
+      request.timeout.ms: 60000
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer # key的序列化器
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer # value的序列化器
+      acks: 1 # acks=0：表示producer不需要等待任何确认收到的信息。副本将立即加到socket缓冲区并认为已经发送。如果使用此选项，则存在丢失数据的风险，因为服务器在数据到达副本之前可能会崩溃。
+      retries: 0 # 失败重试次数，0表示不启用重试机制
+      batch-size: 16384 # 发送缓冲区大小，按照字节计算
+      buffer-memory: 33554432 # 发送缓存区的大小，按照字节计算
+      compression-type: gzip # 压缩类型，默认是none，可选snappy、gzip、lz4
+    consumer:
+      #Kafka中没有初始偏移或如果当前偏移在服务器上不再存在时,默认区最新 ，有三个选项 【latest, earliest, none】
+      auto-offset-reset: earliest
+      #是否开启自动提交
+      enable-auto-commit: false
+      #key的解码方式
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      #value的解码方式
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      #消费者组groupid
+      group-id: datacenter-group
+      #消费者最大拉取的消息数量
+      max-poll-records: 1000
+      #一次请求中服务器返回的最小数据量(以字节为单位),默认1，这里设置5kb,对应kafka的参数fetch.min.bytes
+      fetch-min-size: 5120
+      #如果队列中数据量少于，fetch-min-size,服务器阻塞的最长时间（单位毫秒），默认500，这里设置5s
+      fetch-max-wait: 5000
+      properties:
+        session.timeout.ms: 45000   #会话超时时间 45s
+        heartbeat.interval.ms: 30000 #心跳时间 30s
+        max-poll-interval-ms: 300000 #消费者最大等待时间 5分钟
+    listener:
+      type: batch
+      ack-mode: manual # 手动提交
+      concurrency: 12 # 并发数

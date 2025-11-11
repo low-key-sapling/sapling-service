@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.sapling</groupId>
+        <artifactId>sapling</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>sapling-server</artifactId>
+    <packaging>jar</packaging>
+
+    <name>${project.artifactId}</name>
+    <description>
+        后端 Server 的主项目，通过引入需要 sapling-module-xxx 的依赖，
+        从而实现提供 RESTful API
+        本质上来说，它就是个空壳（容器）！
+    </description>
+
+    <dependencies>
+
+        <!-- system -->
+        <dependency>
+            <groupId>com.sapling</groupId>
+            <artifactId>sapling-module-system-adapter</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sapling</groupId>
+            <artifactId>sapling-module-system-app</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sapling</groupId>
+            <artifactId>sapling-module-system-client</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sapling</groupId>
+            <artifactId>sapling-module-system-domain</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sapling</groupId>
+            <artifactId>sapling-module-system-infrastructure</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.yomahub</groupId>
+            <artifactId>tlog-all-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.3.39</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/lib/spring-webmvc-5.3.39.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>5.3.39</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/lib/spring-web-5.3.39.jar</systemPath>
+        </dependency>
+
+
+    </dependencies>
+
+
+    <build>
+        <!-- 设置构建的 jar 包名 -->
+        <finalName>epc-biz</finalName>
+        <plugins>
+            <!-- 打包 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.7.18</version> <!-- 如果 spring.boot.version 版本修改，则这里也要跟着修改 -->
+                <configuration>
+                    <fork>true</fork>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal> <!-- 将引入的 jar 打入其中 -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

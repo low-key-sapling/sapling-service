@@ -1,0 +1,43 @@
+---
+inclusion: manual
+---
+# 模块说明指南
+
+## 模块职责
+
+### endpoint-server
+- 主应用程序入口
+- 包含启动类和主配置
+- 集成其他模块的功能
+
+### endpoint-framework
+- 框架核心功能
+- 通用工具类
+- 基础配置类
+
+### endpoint-dependencies
+- 统一管理项目依赖
+- 版本控制
+- 依赖冲突解决
+
+### endpoint-module-system
+- 系统管理功能
+- 用户权限管理
+- 系统配置管理
+
+## 模块间依赖关系
+
+```
+endpoint-server
+    ├── endpoint-framework
+    ├── endpoint-module-system
+    └── endpoint-dependencies (通过 dependencyManagement 管理)
+```
+
+## 开发建议
+
+1. 新功能优先考虑在 endpoint-module-system 中实现
+2. 通用功能应放在 endpoint-framework 中
+3. 依赖版本统一在 endpoint-dependencies 中管理
+4. 避免模块间的循环依赖
+

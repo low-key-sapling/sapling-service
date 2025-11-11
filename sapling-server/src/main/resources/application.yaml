@@ -1,0 +1,26 @@
+server:
+  port: 29002
+  servlet:
+    context-path: /biz
+# Spring
+spring:
+  profiles:
+    include: biz,kafka,monitor,mybatisplus,redis,security,liteflow,polaris,forest,security,elasticsearch
+    active: prod
+  mvc:
+    annotation-driven: true
+  servlet:
+    multipart:
+      max-file-size: 1GB
+      max-request-size: 1GB
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: epc_biz
+# logging:
+logging:
+  config: classpath:logback-spring.xml
+  file:
+    name: /var/log/mbws/epc_biz/${spring.application.name}.log
+  level:
+    org.apache.kafka: ERROR

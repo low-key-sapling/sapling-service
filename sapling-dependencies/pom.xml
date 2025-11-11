@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.sapling</groupId>
+    <artifactId>sapling-dependencies</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+
+    <name>${project.artifactId}</name>
+    <description>基础 bom 文件，管理整个项目的依赖版本</description>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <revision>1.0.0</revision>
+        <!-- 统一依赖管理 -->
+        <spring.boot.version>2.7.18</spring.boot.version>
+        <!-- Web 相关 -->
+        <servlet.version>2.5</servlet.version>
+        <redisson.version>3.22.0</redisson.version>
+        <!-- Test 测试相关 -->
+        <podam.version>7.2.6.RELEASE</podam.version>
+        <jedis-mock.version>0.1.16</jedis-mock.version>
+        <mockito-inline.version>3.9.0</mockito-inline.version>
+        <!-- 工具类相关 -->
+        <lombok.version>1.18.20</lombok.version>
+        <mapstruct.version>1.4.2.Final</mapstruct.version>
+        <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
+        <hutool.version>5.8.40</hutool.version>
+        <velocity.version>2.3</velocity.version>
+        <transmittable-thread-local.version>2.12.3</transmittable-thread-local.version>
+        <commons-net.version>3.8.0</commons-net.version>
+        <mapstruct.version>1.4.2.Final</mapstruct.version>
+        <!-- 三方云服务相关 -->
+        <discovery.version>2021.0.1.0</discovery.version>
+        <nacos.config.version>2021.0.1.0</nacos.config.version>
+        <bootstrap.version>3.1.0</bootstrap.version>
+        <bcprov.version>1.80</bcprov.version>
+        <threadpool.version>2.0.0</threadpool.version>
+        <commons-compress.version>1.26.0</commons-compress.version>
+        <snappy.version>1.1.8.4</snappy.version>
+        <liteflow.version>2.15.0</liteflow.version>
+        <kotime.version>2.5.0</kotime.version>
+        <jasypt.version>1.9.3</jasypt.version>
+        <cola.components.version>4.0.0</cola.components.version>
+        <tlog.version>1.5.2</tlog.version>
+        <commons-io.version>2.15.1</commons-io.version>
+        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <logback.version>1.2.13</logback.version>
+        <resilience4j.version>1.7.1</resilience4j.version>
+        <!-- 三方组件版本管理 -->
+        <!-- MyBatis 相关 -->
+        <mybatis.plus.version>3.5.3.1</mybatis.plus.version>
+        <mysql-connector.version>8.0.28</mysql-connector.version>
+        <Dm7JdbcDriver.version>7.1.4.74</Dm7JdbcDriver.version>
+        <kingbase8.version>8.6.0</kingbase8.version>
+        <oscarJDBC.version>7.0.85x20180613133024</oscarJDBC.version>
+        <postgresql.version>1.0.0</postgresql.version>
+        <highgo-jdbc.version>6.2.3</highgo-jdbc.version>
+        <highgo-jdbc.version>6.0.3.jre8</highgo-jdbc.version>
+        <alibaba.fastjson.version>1.2.83</alibaba.fastjson.version>
+        <apache.commons.lang3.version>3.12.0</apache.commons.lang3.version>
+        <apache.commons.collections4.version>4.4</apache.commons.collections4.version>
+        <apache.commons.io.version>2.11.0</apache.commons.io.version>
+        <alibaba.ttl.version>2.12.6</alibaba.ttl.version>
+        <google.guava.version>33.4.5-jre</google.guava.version>
+        <jpinyin.version>1.1.8</jpinyin.version>
+        <jaxb.api.version>2.3.1</jaxb.api.version>
+        <commons-pool2.version>2.11.1</commons-pool2.version>
+        <jackson.version>2.13.5</jackson.version>
+        <junit.version>4.13.2</junit.version>
+        <j2cache.core.version>2.8.5-release</j2cache.core.version>
+        <j2cache.spring.version>2.8.0-release</j2cache.spring.version>
+        <jgroups.version>3.6.20.Final</jgroups.version>
+        <jedis.version>3.7.1</jedis.version>
+        <prometheus.version>1.10.10</prometheus.version>
+        <equator.version>1.0.4</equator.version>
+        <netty.version>4.1.113.Final</netty.version>
+        <javassist.version>3.20.0-GA</javassist.version>
+        <okhttp.version>4.8.1</okhttp.version>
+        <slf4j.version>1.7.36</slf4j.version>
+        <polaris.version>1.0</polaris.version>
+        <forest.version>1.6.4</forest.version>
+        <snakeyaml.version>2.5</snakeyaml.version>
+        <protobuf-java.version>3.25.8</protobuf-java.version>
+        <xnio.version>3.8.17.Final</xnio.version>
+        <tomcat.version>9.0.109</tomcat.version>
+        <kafka.client.version>3.4.0</kafka.client.version>
+        <spring.kafka.version>2.9.11</spring.kafka.version>
+        <json-path.version>2.9.0</json-path.version>
+        <dom4j.version>2.1.5</dom4j.version>
+        <snappy-java.version>1.1.10.6</snappy-java.version>
+        <elasticsearch.version>2.0.0</elasticsearch.version>
+        <bboss.elastic.version>6.8.6</bboss.elastic.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector.version}</version>
+            </dependency>
+
+
+            <!-- 数据库相关驱动 -->
+            <dependency>
+                <groupId>com.dameng</groupId>
+                <artifactId>Dm7JdbcDriver</artifactId>
+                <version>${Dm7JdbcDriver.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.highgo</groupId>
+                <artifactId>HgdbJdbc</artifactId>
+                <version>${highgo-jdbc.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.kingbase</groupId>
+                <artifactId>kingbase8</artifactId>
+                <version>${kingbase8.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.oscar</groupId>
+                <artifactId>oscarJDBC</artifactId>
+                <version>${oscarJDBC.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>
+
+            <!-- Spring Boot 核心依赖 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Spring Boot 配置处理器 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-configuration-processor</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <!-- Web 相关 -->
+            <dependency>
+                <groupId>com.sapling</groupId>
+                <artifactId>sapling-spring-boot-starter-web</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+
+            <!-- 性能分析工具 -->
+            <dependency>
+                <groupId>cn.langpy</groupId>
+                <artifactId>ko-time</artifactId>
+                <version>${kotime.version}</version>
+            </dependency>
+
+            <!-- 线程池相关，用于父子线程传值 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>transmittable-thread-local</artifactId>
+                <version>${transmittable-thread-local.version}</version>
+            </dependency>
+
+            <!-- system -->
+            <dependency>
+                <groupId>com.sapling</groupId>
+                <artifactId>sapling-module-system-adapter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.sapling</groupId>
+                <artifactId>sapling-module-system-app</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.sapling</groupId>
+                <artifactId>sapling-module-system-client</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.sapling</groupId>
+                <artifactId>sapling-module-system-domain</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.sapling</groupId>
+                <artifactId>sapling-module-system-infrastructure</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <!--COLA Components-->
+            <dependency>
+                <groupId>com.alibaba.cola</groupId>
+                <artifactId>cola-component-dto</artifactId>
+                <version>${cola.components.version}</version>
+            </dependency>
+            <!--COLA Components End-->
+
+            <!-- Trace -->
+            <dependency>
+                <groupId>com.yomahub</groupId>
+                <artifactId>tlog-all-spring-boot-starter</artifactId>
+                <version>${tlog.version}</version>
+            </dependency>
+
+            <!-- 加密工具类 -->
+            <dependency>
+                <groupId>org.jasypt</groupId>
+                <artifactId>jasypt</artifactId>
+                <version>${jasypt.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk18on</artifactId>
+                <version>${bcprov.version}</version>
+            </dependency>
+
+
+            <!-- JSON 处理工具 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${alibaba.fastjson.version}</version>
+            </dependency>
+
+            <!-- 流程引擎 -->
+            <dependency>
+                <groupId>com.yomahub</groupId>
+                <artifactId>liteflow-spring-boot-starter</artifactId>
+                <version>${liteflow.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.yomahub</groupId>
+                <artifactId>liteflow-script-qlexpress</artifactId>
+                <version>${liteflow.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.yomahub</groupId>
+                <artifactId>liteflow-script-javax-pro</artifactId>
+                <version>${liteflow.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.zfsy</groupId>
+                <artifactId>zf-elasticsearch-spring-boot-starter</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.bbossgroups.plugins</groupId>
+                <artifactId>bboss-elasticsearch-spring-boot-starter</artifactId>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-reload4j</artifactId>
+                    </exclusion>
+                </exclusions>
+                <version>${bboss.elastic.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.bbossgroups.plugins</groupId>
+                <artifactId>bboss-elasticsearch-rest-jdbc</artifactId>
+                <version>${bboss.elastic.version}</version>
+            </dependency>
+
+            <!-- 日志框架 -->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+
+            <!-- 弹性框架 -->
+            <dependency>
+                <groupId>io.github.resilience4j</groupId>
+                <artifactId>resilience4j-spring-boot2</artifactId>
+                <version>${resilience4j.version}</version>
+            </dependency>
+
+            <!-- 自定义框架 -->
+            <dependency>
+                <groupId>net.zfsy</groupId>
+                <artifactId>zhongfu-framework-boot-core</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.zfsy</groupId>
+                <artifactId>zhongfu-framework-boot-common</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+
+            <!-- 分布式缓存 -->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.redisson</groupId>
+                        <artifactId>redisson-spring-data-31</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- 修复  CVE-2023-42809 -->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-data-27</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring.boot.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>io.lettuce</groupId>
+                        <artifactId>lettuce-core</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <!-- Lombok 简化代码 -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <!-- Hutool 工具类 -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <!-- 父子模块工程，在父POM中定义hutool-core的版本，所有子项目均使用改吧本-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-core</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <!-- 父子模块工程，在父POM中定义hutool-crypto，所有子项目均使用改吧本-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-crypto</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <!-- 父子模块工程，在父POM中定义hutool-cache，所有子项目均使用改吧本-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-cache</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId> <!-- use mapstruct-jdk8 for Java 8 or higher -->
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-jdk8</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-mapstruct-binding</artifactId>
+                <version>${lombok-mapstruct-binding.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${velocity.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${apache.commons.lang3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${apache.commons.collections4.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${apache.commons.io.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${commons-pool2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>${commons-net.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${google.guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.javassist</groupId>
+                <artifactId>javassist</artifactId>
+                <version>${javassist.version}</version>
+            </dependency>
+
+            <!--MQ-->
+            <dependency>
+                <groupId>com.sapling</groupId>
+                <artifactId>sapling-spring-boot-starter-kafka</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka</artifactId>
+                <version>${spring.kafka.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>${kafka.client.version}</version>
+            </dependency>
+
+
+
+            <dependency>
+                <groupId>com.sapling</groupId>
+                <artifactId>sapling-mybatis-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-extension</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+
+            <!-- 注册中心SDK组件 -->
+            <dependency>
+                <groupId>net.zfsy</groupId>
+                <artifactId>polaris</artifactId>
+                <version>${polaris.version}</version>
+            </dependency>
+
+            <!-- 声明式客户端 -->
+            <dependency>
+                <groupId>com.dtflys.forest</groupId>
+                <artifactId>forest-spring-boot-starter</artifactId>
+                <version>${forest.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>${snakeyaml.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <version>${protobuf-java.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.xnio</groupId>
+                <artifactId>xnio-api</artifactId>
+                <version>${xnio.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-core</artifactId>
+                <version>${tomcat.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-websocket</artifactId>
+                <version>${tomcat.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-el</artifactId>
+                <version>${tomcat.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.jayway.jsonpath</groupId>
+                <artifactId>json-path</artifactId>
+                <version>${json-path.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>${dom4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.xerial.snappy</groupId>
+                <artifactId>snappy-java</artifactId>
+                <version>${snappy-java.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+</project>

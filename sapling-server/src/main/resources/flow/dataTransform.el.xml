@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE flow PUBLIC  "liteflow" "https://liteflow.cc/liteflow.dtd">
+<flow>
+    <nodes>
+        <node id="dataTransform" type="script" language="java">
+            <![CDATA[
+            import com.yomahub.liteflow.core.NodeComponent;
+            import net.zf.module.system.infrastructure.common.slot.SystemContext;
+            import com.alibaba.fastjson.JSONObject;
+            import java.util.List;
+            import java.util.Arrays;
+            public class DataTransform extends NodeComponent {
+                @Override
+                public void process() throws Exception {
+                    SystemContext ctx = this.getFirstContextBean();
+                    JSONObject inputJson = JSONObject.parseObject(ctx.get("inputString"));
+                    JSONObject outputJson = new JSONObject();
+                    // 遍历字段，若取不到则放空字符串
+                    // 直接使用原始字段名
+                    List<String> fields = Arrays.asList(
+                        "alarm_file_name",      // 文件名
+                        "alarm_md5",            // 文件md5
+                        "alarm_src_location",   // 文件路径
+                        "alarm_action",         // 来源（实时监测 | 主机检查）
+                        "alarm_company",        // 单位部门
+                        "user_name",            // 责任人
+                        "host_ip",              // ip
+                        "alarm_updatetime",     // 上报时间
+                        "judge_mglevel",        // 判定密级
+                        "judge_time",           // 判定时间
+                        "alarm_iscleared"       // 客户端清理状态（可选）
+                    );
+                    for (String key : fields) {
+                        outputJson.put(key, inputJson.getString(key) == null ? "" : inputJson.getString(key));
+                    }
+                    ctx.set("outputJson", outputJson);
+                }
+            }
+            ]]>
+        </node>
+    </nodes>
+
+
+
+
+    <chain name="dataTransformScriptChain">
+        THEN(dataTransform,resultDeal,sendKafka);
+    </chain>
+
+    <chain name="fileJudgeChain">
+        THEN(SWITCH(sourceTypeSwitch).to(esQueryWJChildDocs, esQueryMGChildDocs),dataTransformList,resultDeal,sendKafka);
+    </chain>
+</flow>

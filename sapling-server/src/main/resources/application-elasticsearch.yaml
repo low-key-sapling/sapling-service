@@ -1,0 +1,38 @@
+spring:
+  elasticsearch:
+    bboss:
+      elasticUser: elastic
+      elasticPassword: 123ABCdef*
+      elasticsearch:
+        rest:
+          hostNames: 192.168.126.130:9200
+        dateFormat: yyyy.MM.dd
+        timeZone: Asia/Shanghai
+        ttl: 2d
+        showTemplate: true
+        discoverHost: false
+      dslfile:
+        refreshInterval: -1
+      http:
+        timeoutConnection: 500000
+        timeoutSocket: 500000
+        connectionRequestTimeout: 500000
+        retryTime: 1
+        maxLineLength: -1
+        maxHeaderCount: 200
+        maxTotal: 400
+        defaultMaxPerRoute: 200
+        soReuseAddress: false
+        soKeepAlive: false
+        timeToLive: 3600000
+        keepAlive: 3600000
+
+es6:
+  rolloverBody: >
+    {
+      "conditions": {
+        "max_age": "30d",
+        "max_docs": 10000000
+      }
+    }
+  rollOverCorn: "0 0 1 1 * ?"

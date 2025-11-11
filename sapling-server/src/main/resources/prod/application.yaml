@@ -1,0 +1,24 @@
+server:
+  port: 29002
+  servlet:
+    context-path: /biz
+# Spring
+spring:
+  profiles:
+    include: prod-biz,prod-kafka,prod-liteflow,prod-monitor,prod-mybatisplus,prod-redis,prod-polaris,prod-forest,prod-security
+    active: prod
+  mvc:
+    annotation-driven: true
+  servlet:
+    multipart:
+      max-file-size: 1GB
+      max-request-size: 1GB
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: epc_bus
+# logging:
+logging:
+  config: config/logback-spring.xml
+  file:
+    name: /var/log/mbws/epc_biz/${spring.application.name}.log

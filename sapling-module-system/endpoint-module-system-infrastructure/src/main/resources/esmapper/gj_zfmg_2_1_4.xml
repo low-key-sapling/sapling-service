@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+    <property name="queryChildByFileCodeWithAfter">
+        <![CDATA[
+        {
+          "size": 0,
+          "query": {
+            "bool": {
+              "must": [
+                {"term": {"my_join_field": "my_child"}},
+                {"terms": {"fileCode": #[fileCodes]}}
+              ]
+            }
+          },
+          "aggs": {
+            "by_host_file": {
+              "composite": {
+                "size": 2000,
+                "after": #[afterKey],
+                "sources": [
+                  {"hostId": {"terms": {"field": "hostId"}}},
+                  {"filepath": {"terms": {"field": "filepath"}}}
+                ]
+              },
+              "aggs": {
+                "one": {
+                  "top_hits": {
+                    "size": 1,
+                    "sort": [
+                      {"@timestamp": {"order": "desc"}}
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+        ]]>
+    </property>
+
+    <property name="queryWJChildByFileCode">
+        <![CDATA[
+        {
+          "size": 0,
+          "query": {
+            "bool": {
+              "must": [
+                {"term": {"my_join_field": "my_child"}},
+                {"terms": {"fileCode": #[fileCodes]}}
+              ]
+            }
+          },
+          "aggs": {
+            "by_host_file": {
+              "composite": {
+                "size": 1000
+              },
+              "aggs": {
+                "one": {
+                  "top_hits": {
+                    "size": 1,
+                    "sort": [
+                      {"@timestamp": {"order": "desc"}}
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+        ]]>
+    </property>
+
+    <property name="queryWJChildByFileCodeWithAfter">
+        <![CDATA[
+        {
+          "size": 0,
+          "query": {
+            "bool": {
+              "must": [
+                {"term": {"my_join_field": "my_child"}},
+                {"terms": {"fileCode": #[fileCodes]}}
+              ]
+            }
+          },
+          "aggs": {
+            "by_host_file": {
+              "composite": {
+                "size": 1000,
+                "after": #[afterKey]
+              },
+              "aggs": {
+                "one": {
+                  "top_hits": {
+                    "size": 1,
+                    "sort": [
+                      {"@timestamp": {"order": "desc"}}
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+        ]]>
+    </property>
+</properties>

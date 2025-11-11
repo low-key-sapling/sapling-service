@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  net.zf.framework.web.config.EndpointWebAutoConfiguration,\
+  net.zf.framework.web.config.ApiVersionAutoConfiguration,\
+  net.zf.framework.web.config.GlobalExceptionAutoConfiguration

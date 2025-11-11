@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.sapling</groupId>
+        <artifactId>sapling-module-system</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+
+    <artifactId>sapling-module-system-domain</artifactId>
+    <packaging>jar</packaging>
+
+    <name>sapling-module-system-domain</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.sapling</groupId>
+            <artifactId>sapling-module-system-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+
+        <dependency>
+            <groupId>net.zfsy</groupId>
+            <artifactId>zhongfu-framework-boot-common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sapling</groupId>
+            <artifactId>sapling-mybatis-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+
+
+    </dependencies>
+</project>

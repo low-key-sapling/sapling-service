@@ -1,0 +1,166 @@
+spring:
+  kafka:
+    bootstrap-servers: 192.168.126.130:9092
+    # ssl:
+    #   trust-store-location: classpath:./jks/client_truststor.jks
+    #   trust-store-password: enc`4g6kye+Pyfddl5DPrI+cQdtYYk4kvvx8
+    # security:
+    #   protocol: SASL_SSL
+    # properties:
+    #   sasl.mechanism: PLAIN
+    #   sasl.jaas.config: enc`QDsDQm5lI5aJ7Tq+03ePrii6fR398hHE0BeQSy4wBmUor3PpcXk7t9Lvtw2VEVB5YXHbUTshjFcd8Xl2BBlnH3cJiJXNPPUXzh2K2IvxGevWfez8TyEoTFpvJRcKRH5+ztPvdZEIqjAXqnnGRSGkDQ==
+    #   ssl.endpoint.identification.algorithm:
+    #   request.timeout.ms: 60000
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer # key的序列化器
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer # value的序列化器
+      acks: 1 # acks=0：表示producer不需要等待任何确认收到的信息。副本将立即加到socket缓冲区并认为已经发送。如果使用此选项，则存在丢失数据的风险，因为服务器在数据到达副本之前可能会崩溃。
+      retries: 3 # 失败重试次数，0表示不启用重试机制
+      batch-size: 16384 # 发送缓冲区大小，按照字节计算
+      buffer-memory: 33554432 # 发送缓存区的大小，按照字节计算
+      compression-type: gzip # 压缩类型，默认是none，可选snappy、gzip、lz4
+    consumer:
+      #Kafka中没有初始偏移或如果当前偏移在服务器上不再存在时,默认区最新 ，有三个选项 【latest, earliest, none】
+      auto-offset-reset: earliest
+      #是否开启自动提交
+      enable-auto-commit: false
+      #key的解码方式
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      #value的解码方式
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      #消费者组groupid
+      group-id: epc-biz-group
+      #消费者最大拉取的消息数量
+      max-poll-records: 1000
+      #一次请求中服务器返回的最小数据量(以字节为单位),默认1，这里设置5kb,对应kafka的参数fetch.min.bytes
+      fetch-min-size: 5120
+      #如果队列中数据量少于，fetch-min-size,服务器阻塞的最长时间（单位毫秒），默认500，这里设置5s
+      fetch-max-wait: 5000
+      properties:
+        session.timeout.ms: 45000   #会话超时时间 45s
+        heartbeat.interval.ms: 30000 #心跳时间 30s
+        max-poll-interval-ms: 300000 #消费者最大等待时间 5分钟
+    listener:
+      type: batch
+      ack-mode: manual # 手动提交
+      concurrency: 12 # 并发数
+
+zf:
+  kafka:
+    dynamic:
+      # Primary data source is not allowed to be empty.
+      primary: shsj-kafka
+      producer:
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+        value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      consumer:
+        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      datasource:
+        # 上海市检
+        shsj-kafka:
+          #          # 安全配置
+          security:
+            # 安全协议: SASL_PLAINTEXT 或 SASL_SSL
+            protocol: SASL_PLAINTEXT
+            # SASL 机制: PLAIN
+            mechanism: PLAIN
+            # SASL 用户名
+            username: admin
+            # SASL 密码（建议使用环境变量: ${KAFKA_PASSWORD}）
+            password: 123456
+          bootstrap-servers: 192.168.126.130:9092
+          consumer:
+            # Consumer concurrent kafka listener container factory is not allowed to be empty.
+            container-factory: shsjKafkaListenerContainerFactory
+            auto-offset-reset: none
+          producer:
+            # Producer kafka template bean name is not allowed to be empty.
+            kafka-template: shsjKafkaTemplate
+
+
+# ==================== SASL/PLAIN 认证配置示例 ====================
+# 以下是多数据源 Kafka 的 SASL/PLAIN 认证配置示例
+# 取消注释并修改相应配置即可启用
+
+#        # 示例1: SASL_PLAINTEXT 认证（无 SSL 加密）
+#        sasl-plaintext-kafka:
+#          bootstrap-servers: kafka-dev.example.com:9092
+#          # 安全配置
+#          security:
+#            protocol: SASL_PLAINTEXT  # 安全协议: SASL_PLAINTEXT 或 SASL_SSL
+#            mechanism: PLAIN           # SASL 机制: PLAIN
+#            username: kafka-user       # SASL 用户名
+#            password: kafka-password   # SASL 密码（建议使用环境变量: ${KAFKA_PASSWORD}）
+#          consumer:
+#            container-factory: saslPlaintextKafkaListenerContainerFactory
+#            group-id: sasl-plaintext-group
+#            auto-offset-reset: latest
+#          producer:
+#            kafka-template: saslPlaintextKafkaTemplate
+#
+#        # 示例2: SASL_SSL 认证（带 SSL 加密）
+#        sasl-ssl-kafka:
+#          bootstrap-servers: kafka-prod.example.com:9093
+#          # 安全配置
+#          security:
+#            protocol: SASL_SSL                                    # 安全协议: SASL_SSL
+#            mechanism: PLAIN                                      # SASL 机制: PLAIN
+#            username: ${KAFKA_USERNAME}                           # 从环境变量读取用户名
+#            password: ${KAFKA_PASSWORD}                           # 从环境变量读取密码
+#            trust-store-location: file:./jks/client_truststore.jks  # SSL 信任存储位置
+#            trust-store-password: ${TRUSTSTORE_PASSWORD}          # SSL 信任存储密码
+#            # 其他 SSL 相关属性
+#            properties:
+#              ssl.endpoint.identification.algorithm: ""           # 禁用主机名验证（仅开发环境）
+#              request.timeout.ms: 60000                           # 请求超时时间
+#          consumer:
+#            container-factory: saslSslKafkaListenerContainerFactory
+#            group-id: sasl-ssl-group
+#            auto-offset-reset: latest
+#          producer:
+#            kafka-template: saslSslKafkaTemplate
+#
+#        # 示例3: 混合配置（部分数据源有认证，部分无认证）
+#        local-kafka:
+#          bootstrap-servers: localhost:9092
+#          # 无安全配置 - 使用非认证连接（向后兼容）
+#          consumer:
+#            container-factory: localKafkaListenerContainerFactory
+#            group-id: local-group
+#          producer:
+#            kafka-template: localKafkaTemplate
+#
+# 配置说明:
+# 1. protocol: 安全协议类型
+#    - PLAINTEXT: 无加密无认证（默认）
+#    - SSL: 仅 SSL 加密
+#    - SASL_PLAINTEXT: SASL 认证但无 SSL 加密
+#    - SASL_SSL: SASL 认证 + SSL 加密（推荐生产环境）
+#
+# 2. mechanism: SASL 认证机制
+#    - PLAIN: 简单用户名/密码认证（当前支持）
+#    - SCRAM-SHA-256: 基于 SHA-256 的 SCRAM 认证（未来支持）
+#    - SCRAM-SHA-512: 基于 SHA-512 的 SCRAM 认证（未来支持）
+#
+# 3. username/password: SASL 认证凭据
+#    - 建议使用环境变量: ${KAFKA_USERNAME} 和 ${KAFKA_PASSWORD}
+#    - 或使用加密属性: enc`xxx
+#
+# 4. trust-store-location: SSL 信任存储文件路径
+#    - 支持 classpath: 前缀（从类路径加载）
+#    - 支持 file: 前缀（从文件系统加载）
+#    - 示例: classpath:jks/truststore.jks 或 file:./jks/truststore.jks
+#
+# 5. trust-store-password: SSL 信任存储密码
+#    - 建议使用环境变量: ${TRUSTSTORE_PASSWORD}
+#
+# 6. properties: 其他安全相关属性
+#    - ssl.endpoint.identification.algorithm: SSL 主机名验证算法（空字符串表示禁用）
+#    - request.timeout.ms: 请求超时时间（毫秒）
+#
+# 最佳实践:
+# - 生产环境使用 SASL_SSL 协议
+# - 使用环境变量或加密属性存储敏感信息
+# - 定期轮换密码和证书
+# - 启用 SSL 主机名验证（生产环境）

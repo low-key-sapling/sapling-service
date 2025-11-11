@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.sapling</groupId>
+    <artifactId>sapling</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>sapling-dependencies</module>
+        <module>sapling-framework</module>
+        <!-- Server 主项目 -->
+        <module>sapling-server</module>
+        <!--  各种 module 拓展 -->
+        <module>sapling-module-system</module>
+    </modules>
+
+    <name>${project.artifactId}</name>
+    <description>项目基础脚手架</description>
+
+    <properties>
+        <revision>1.0.0</revision>
+        <!-- Maven 相关 -->
+        <java.version>1.8</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <lombok.version>1.18.20</lombok.version>
+        <mapstruct.version>1.4.1.Final</mapstruct.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.sapling</groupId>
+                <artifactId>sapling-dependencies</artifactId>
+                <version>${revision}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.7.18</version>
+                <configuration>
+                    <layout>ZIP</layout>
+                    <includes>
+                        <include>
+                            <groupId>nothing</groupId>
+                            <artifactId>nothing</artifactId>
+                        </include>
+                    </includes>
+                </configuration>
+            </plugin>
+
+
+            <!-- 将依赖的jar包copy到lib目录下  -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.8</version>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <!-- 指定依赖的路径 -->
+                            <outputDirectory>
+                                ${project.build.directory}/lib
+                            </outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- 将依赖的cfg copy到config目录下  -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-cfg</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <!-- 指定依赖的路径 -->
+                            <outputDirectory>
+                                ${project.build.directory}/config
+                            </outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources/prod</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>copy-cfg-2</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <!-- 指定依赖的路径 -->
+                            <outputDirectory>
+                                ${project.build.directory}/config
+                            </outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources</directory>
+                                    <include>bootstrap.yaml</include>
+                                    <include>banner.txt</include>
+                                    <include>flow/*.*</include>
+                                    <exclude>jks/*.*</exclude>
+                                    <exclude>META-INF/*.*</exclude>
+                                    <exclude>logback-spring.xml</exclude>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+
+                    <!-- 将依赖的jks copy到jks目录下  -->
+                    <execution>
+                        <id>copy-jks</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <!-- 指定依赖的路径 -->
+                            <outputDirectory>
+                                ${project.build.directory}/jks
+                            </outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources/jks</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>copy-shell</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <!-- 指定依赖的路径 -->
+                            <outputDirectory>
+                                ${project.build.directory}/bin
+                            </outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/script</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+
+</project>

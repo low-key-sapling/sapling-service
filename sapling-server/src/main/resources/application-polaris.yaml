@@ -1,0 +1,14 @@
+endpoint:
+  polaris:
+    # 原nacos服务名
+    serviceName: epc-biz
+    # 原nacos服务IP
+    serviceIp: 127.0.0.1
+    # 原nacos服务端口
+    servicePort: 29002
+    # Server端地址，格式：ip:port，即平台服务地址，集群情况下以英文逗号分隔
+    serverHost: 127.0.0.1:8888
+    # token
+    serviceToken: enc`MM01Ahzwzn4ZuCTQG5n80aVC4eFdSdQ7
+    # token秘钥
+    jasyptKey: GeZmxIduyAT0aoYe

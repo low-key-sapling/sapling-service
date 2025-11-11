@@ -1,0 +1,147 @@
+endpoint:
+  security:
+    # 是否启用安全过滤器
+    enabled: true
+    tokenInterceptUrl: /register/batch-register,/register/batch-reg-cancel,/register/query-device-info,/register/query-sid,/user/batch-create-user,/user/refresh-cache
+    sessionInterceptUrl: /policy_distribute/policy_distribute_org,/policy_distribute/policy_distribute_device
+    # IP 黑名单配置
+    blacklist:
+      ips: 
+
+    # 禁止的 Content-Type
+    blocked:
+      content-types: application/xml,text/xml,application/x-www-form-urlencoded,application/javascript,text/javascript,text/plain,multipart/form-data
+
+    # 请求大小限制
+    max:
+      request:
+        size: 10485760  # 请求体最大大小，默认 10MB
+      header:
+        size: 8192      # 请求头最大大小，默认 8KB
+      parameters: 1000       # 最大参数数量
+      parameter:
+        size: 4096   # 单个参数最大长度
+
+    # 允许的 Host
+    allowed:
+      hosts: 
+
+    # 安全规则正则表达式
+    patterns:
+      # SQL 注入检测规则
+      sql-injection: |
+        (?i)(\b(select|insert|update|delete|drop|create|alter|truncate|exec|execute|union|where|from|join|into|load_file|outfile|concat|substr|substring|ascii|char|length|len|count|sum|avg|max|min|information_schema|sys\.|sysobjects|syscolumns|sys\.tables|sys\.columns|--|#|/\*|\*/|xp_|sp_|0x|0b|0o|backup|restore|dump|load|copy|move|rename|grant|revoke)\b)
+
+      # XSS 攻击检测规则
+      xss: |
+        (?i)(
+          # 基本 XSS 向量
+          (<script|javascript:|onerror=|onload=|onclick=|onmouseover=|eval\(|document\.cookie)
+          |
+          # 事件处理器
+          (on\w+\s*=)
+          |
+          # 危险属性
+          (src=|href=|action=|background=|url\(|expression\()
+          |
+          # 编码的 XSS
+          (%3C|%3E|%22|%27|%2F|%5C|%0A|%0D|%0B|%0C|%0E|%0F)
+          |
+          # 特殊字符
+          (<|>|"|'|/|\\)
+          |
+          # 其他 XSS 向量
+          (alert\(|confirm\(|prompt\(|document\.write|document\.writeln|innerHTML|outerHTML)
+        )
+
+      # 路径穿越检测规则
+      path-traversal: |
+        (?i)(
+          # 基本路径穿越
+          (\.\./|\.\.\\|%2e%2e%2f|%252e%252e%252f)
+          |
+          # 编码的路径穿越
+          (%2e%2e%5c|%252e%252e%255c|%c0%ae%c0%ae%c0%af|%uff0e%uff0e%u2215)
+          |
+          # 特殊路径
+          (/etc/passwd|/etc/shadow|/etc/hosts|/etc/profile|/etc/group)
+          |
+          # Windows 路径
+          (c:\\windows|\\windows\\system32|\\boot\.ini|\\autoexec\.bat)
+          |
+          # 其他敏感路径
+          (/proc/|/sys/|/dev/|/var/log/|/var/www/|/root/|/home/)
+        )
+
+      # 命令注入检测规则
+      command-injection: |
+        (?i)(
+          # 基本命令分隔符
+          (\|\||&&|;|`|\$\()
+          |
+          # 管道和重定向
+          (\||>|<|>>|<<|2>&1)
+          |
+          # 常见命令
+          (cat|ls|dir|rm|del|cp|mv|chmod|chown|wget|curl|nc|netcat|bash|sh|cmd|powershell)
+          |
+          # 环境变量
+          (\$PATH|\$HOME|\$USER|\$SHELL|\$PWD)
+          |
+          # 特殊字符
+          (\$|#|@|!|~|&)
+          |
+          # 编码的命令
+          (%3B|%26|%7C|%60|%24%28)
+        )
+
+      # 危险文件上传检测规则
+      file-upload: |
+        (?i)(
+          # 可执行文件
+          \.(php|jsp|asp|aspx|exe|dll|bat|cmd|sh|bash|py|pl|cgi)$
+          |
+          # 脚本文件
+          \.(js|vbs|wsf|hta|ps1|psm1|psd1|ps1xml|psc1|pssc)$
+          |
+          # 配置文件
+          \.(ini|conf|config|xml|json|yaml|yml|properties)$
+          |
+          # 数据库文件
+          \.(db|sqlite|sql|mdb|accdb|dbf)$
+          |
+          # 日志文件
+          \.(log|logs|txt|text|md|markdown)$
+          |
+          # 压缩文件
+          \.(zip|rar|7z|tar|gz|bz2|xz)$
+          |
+          # 其他危险文件
+          \.(htaccess|htpasswd|env|git|svn|bak|backup|old|tmp|temp)$
+        )
+
+      # XML 外部实体注入检测规则
+      xxe: |
+        (?i)(
+          (<!ENTITY|<!DOCTYPE|<!ELEMENT|<!ATTLIST|<!NOTATION)
+          |
+          (SYSTEM|PUBLIC|%|&|#)
+          |
+          (file:|http:|ftp:|jar:|netdoc:|gopher:|data:|dict:|ldap:)
+        )
+
+      # 模板注入检测规则
+      template-injection: |
+        (?i)(\{\{|\}\}|\$\{|%\{|%\}|<%=|%>|eval\(|exec\(|system\(|process\(|spawn\(|fork\(|child_process\(|__import__|import|require|include|load)
+
+      # 反序列化检测规则
+      deserialization: |
+        (?i)(
+          (ObjectInputStream|ObjectOutputStream|readObject|writeObject)
+          |
+          (XMLDecoder|XMLEncoder|readObject|writeObject)
+          |
+          (Yaml\.load|Yaml\.dump|load|dump)
+          |
+          (JSON\.parse|JSON\.stringify|parse|stringify)
+        )

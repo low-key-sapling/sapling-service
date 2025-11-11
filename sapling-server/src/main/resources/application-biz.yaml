@@ -1,0 +1,18 @@
+endpoint:
+  info:
+    version: 1.0.0
+    base-package: net.zf
+  
+  # 定时任务配置
+  scheduler:
+    data-sync:  # 数据同步相关的任务
+      org-sync:  # 组织机构同步任务
+        cron: "0 */30 * * * ?"  # 每30分钟执行一次
+        enabled: true  # 是否启用该任务
+
+  cache:
+    command-jvm:
+      maxSize: 10000  #jvm存储个数
+      expireDay: 15  #jvm存储过期时间 单位天 默认15天
+    command-redis:
+      expireSecond: 2592000 #redis过期时间 单位秒 默认30天
