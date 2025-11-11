@@ -12,8 +12,8 @@
     <modules>
         <module>sapling-spring-boot-starter-web</module>
         <module>sapling-spring-boot-starter-kafka</module>
-        <module>zhongfu-framework-boot-common</module>
-        <module>zhongfu-framework-boot-core</module>
+        <module>sapling-framework-boot-common</module>
+        <module>sapling-framework-boot-core</module>
         <module>sapling-mybatis-spring-boot-starter</module>
     </modules>
 

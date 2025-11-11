@@ -17,12 +17,12 @@
     <dependencies>
         <dependency>
             <groupId>net.zfsy</groupId>
-            <artifactId>zhongfu-framework-boot-common</artifactId>
+            <artifactId>sapling-framework-boot-common</artifactId>
         </dependency>
 
         <dependency>
             <groupId>net.zfsy</groupId>
-            <artifactId>zhongfu-framework-boot-core</artifactId>
+            <artifactId>sapling-framework-boot-core</artifactId>
         </dependency>
 
         <dependency>

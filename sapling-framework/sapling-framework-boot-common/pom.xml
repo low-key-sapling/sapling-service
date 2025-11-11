@@ -9,7 +9,7 @@
 
 
     <groupId>net.zfsy</groupId>
-    <artifactId>zhongfu-framework-boot-common</artifactId>
+    <artifactId>sapling-framework-boot-common</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>

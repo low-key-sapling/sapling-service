@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <name>${project.artifactId}</name>
-    <description>基础 bom 文件，管理整个项目的依赖版本</description>
+    <description>基础 pom 文件，管理整个项目的依赖版本</description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -314,13 +314,13 @@
             <!-- 自定义框架 -->
             <dependency>
                 <groupId>net.zfsy</groupId>
-                <artifactId>zhongfu-framework-boot-core</artifactId>
+                <artifactId>sapling-framework-boot-core</artifactId>
                 <version>${revision}</version>
             </dependency>
 
             <dependency>
                 <groupId>net.zfsy</groupId>
-                <artifactId>zhongfu-framework-boot-common</artifactId>
+                <artifactId>sapling-framework-boot-common</artifactId>
                 <version>${revision}</version>
             </dependency>
 
@@ -529,7 +529,6 @@
                 <artifactId>kafka-clients</artifactId>
                 <version>${kafka.client.version}</version>
             </dependency>
-
 
 
             <dependency>
