@@ -8,7 +8,7 @@
     </parent>
 
 
-    <artifactId>sapling-mybatis-spring-boot-starter</artifactId>
+    <artifactId>sapling-mybatis-plus-boot-starter</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
