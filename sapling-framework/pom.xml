@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>sapling</artifactId>
         <groupId>com.sapling</groupId>
+        <artifactId>sapling-framework</artifactId>
         <version>${revision}</version>
     </parent>
     <packaging>pom</packaging>
@@ -14,7 +14,7 @@
         <module>sapling-spring-boot-starter-kafka</module>
         <module>sapling-framework-boot-common</module>
         <module>sapling-framework-boot-core</module>
-        <module>sapling-mybatis-spring-boot-starter</module>
+        <module>sapling-mybatis-plus-boot-starter</module>
     </modules>
 
     <artifactId>sapling-framework</artifactId>

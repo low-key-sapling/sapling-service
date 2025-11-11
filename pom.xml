@@ -4,13 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.sapling</groupId>
-    <artifactId>sapling</artifactId>
+    <artifactId>sapling-service</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
     <modules>
+        <!-- 项目依赖管理 -->
         <module>sapling-dependencies</module>
+        <!-- 项目组件 -->
         <module>sapling-framework</module>
-        <!-- Server 主项目 -->
+        <!-- 主项目 -->
         <module>sapling-server</module>
         <!--  各种 module 拓展 -->
         <module>sapling-module-system</module>
@@ -27,8 +29,6 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
-        <lombok.version>1.18.20</lombok.version>
-        <mapstruct.version>1.4.1.Final</mapstruct.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
