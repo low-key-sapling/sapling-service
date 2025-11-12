@@ -1,4 +1,4 @@
-package com.sapling.frame.elastic.helper;
+package com.sapling.framework.elasticsearch.helper;
 
 import java.util.HashMap;
 import java.util.function.Supplier;

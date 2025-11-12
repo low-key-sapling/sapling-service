@@ -1,4 +1,4 @@
-package com.sapling.frame.elastic.config;
+package com.sapling.framework.elasticsearch.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

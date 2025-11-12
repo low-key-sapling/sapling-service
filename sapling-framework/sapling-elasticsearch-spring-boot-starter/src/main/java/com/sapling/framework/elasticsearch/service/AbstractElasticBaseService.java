@@ -1,11 +1,11 @@
-package com.sapling.frame.elastic.service;
+package com.sapling.framework.elasticsearch.service;
 
 import cn.hutool.core.util.ClassUtil;
 import com.alibaba.fastjson.JSON;
-import com.sapling.frame.elastic.annotations.ESDsl;
-import com.sapling.frame.elastic.annotations.ESMapping;
-import com.sapling.frame.elastic.enums.ESMappingType;
-import com.sapling.frame.elastic.helper.LambdaHashMap;
+import com.sapling.framework.elasticsearch.annotations.ESDsl;
+import com.sapling.framework.elasticsearch.annotations.ESMapping;
+import com.sapling.framework.elasticsearch.enums.ESMappingType;
+import com.sapling.framework.elasticsearch.helper.LambdaHashMap;
 import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Field;

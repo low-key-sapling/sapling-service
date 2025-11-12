@@ -1,4 +1,4 @@
-package com.sapling.frame.elastic.enums;
+package com.sapling.framework.elasticsearch.enums;
 
 
 /**

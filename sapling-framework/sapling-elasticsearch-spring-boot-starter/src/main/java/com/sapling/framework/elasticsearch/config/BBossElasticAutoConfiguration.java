@@ -1,4 +1,4 @@
-package com.sapling.frame.elastic.config;
+package com.sapling.framework.elasticsearch.config;
 
 import org.frameworkset.elasticsearch.boot.BBossESStarter;
 import org.slf4j.Logger;

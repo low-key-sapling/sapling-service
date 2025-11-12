@@ -1,4 +1,4 @@
-package com.sapling.frame.elastic.annotations;
+package com.sapling.framework.elasticsearch.annotations;
 
 import java.lang.annotation.*;
 

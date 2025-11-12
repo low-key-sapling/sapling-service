@@ -1,4 +1,4 @@
-package com.sapling.frame.elastic.service;
+package com.sapling.framework.elasticsearch.service;
 
 import org.frameworkset.elasticsearch.boot.BBossESStarter;
 import org.frameworkset.elasticsearch.client.ClientInterface;

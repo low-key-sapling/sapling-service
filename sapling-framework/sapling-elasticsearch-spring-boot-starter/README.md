@@ -68,9 +68,9 @@ sapling:
 ```java
 package com.example.entity;
 
-import com.sapling.frame.elastic.annotations.ESDsl;
-import com.sapling.frame.elastic.annotations.ESMapping;
-import com.sapling.frame.elastic.enums.ESMappingType;
+import annotations.com.sapling.framework.elasticsearch.ESDsl;
+import annotations.com.sapling.framework.elasticsearch.ESMapping;
+import enums.com.sapling.framework.elasticsearch.ESMappingType;
 import lombok.Data;
 
 @Data
@@ -81,27 +81,27 @@ import lombok.Data;
 )
 public class User {
 
-    @ESMapping(ESMappingType.keyword)
-    private String id;
+   @ESMapping(ESMappingType.keyword)
+   private String id;
 
-    @ESMapping(
-            value = ESMappingType.text,
-            analyzer = "ik_max_word",  // 使用 IK 分词器
-            boost = 2                   // 加权值
-    )
-    private String name;
+   @ESMapping(
+           value = ESMappingType.text,
+           analyzer = "ik_max_word",  // 使用 IK 分词器
+           boost = 2                   // 加权值
+   )
+   private String name;
 
-    @ESMapping(ESMappingType._integer)
-    private Integer age;
+   @ESMapping(ESMappingType._integer)
+   private Integer age;
 
-    @ESMapping(ESMappingType.keyword)
-    private String email;
+   @ESMapping(ESMappingType.keyword)
+   private String email;
 
-    @ESMapping(ESMappingType.date)
-    private Date createTime;
+   @ESMapping(ESMappingType.date)
+   private Date createTime;
 
-    // 默认为 text 类型
-    private String description;
+   // 默认为 text 类型
+   private String description;
 }
 ```
 
@@ -113,13 +113,13 @@ public class User {
 package com.example.service;
 
 import com.example.entity.User;
-import com.sapling.frame.elastic.service.ElasticBaseService;
+import service.com.sapling.framework.elasticsearch.ElasticBaseService;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserElasticService extends ElasticBaseService<User> {
 
-    // 可以添加自定义方法
+   // 可以添加自定义方法
 
 }
 ```

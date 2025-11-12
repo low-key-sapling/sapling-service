@@ -1,6 +1,6 @@
-package com.sapling.frame.elastic.annotations;
+package com.sapling.framework.elasticsearch.annotations;
 
-import com.sapling.frame.elastic.enums.ESMappingType;
+import com.sapling.framework.elasticsearch.enums.ESMappingType;
 
 import java.lang.annotation.*;
 
