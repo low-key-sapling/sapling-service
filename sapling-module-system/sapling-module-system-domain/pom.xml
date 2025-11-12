@@ -39,7 +39,7 @@
 
         <dependency>
             <groupId>com.sapling</groupId>
-            <artifactId>sapling-mybatis-spring-boot-starter</artifactId>
+            <artifactId>sapling-mybatis-plus-boot-starter</artifactId>
         </dependency>
 
         <dependency>

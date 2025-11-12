@@ -45,7 +45,7 @@ sapling-mybatis-plus-boot-starter 基于MyBatis-Plus 3.5.1 进行封装。同样
 
 ```XML
 <dependency>
-   <groupId>net.zfsy</groupId>
+   <groupId>com.sapling</groupId>
    <artifactId>sapling-mybatis-plus-boot-starter</artifactId>
    <version>${last_update_version}</version>
 </dependency> 
