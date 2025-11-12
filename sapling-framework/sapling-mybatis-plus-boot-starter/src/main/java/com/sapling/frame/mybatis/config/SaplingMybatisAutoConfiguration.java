@@ -28,7 +28,7 @@ import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.sapling.frame.mybatis.core.handler.CustomMetaObjectHandler;
-import com.sapling.frame.mybatis.core.mapping.ZfDatabaseIdProvider;
+import com.sapling.frame.mybatis.core.mapping.SaplingDatabaseIdProvider;
 import org.apache.ibatis.annotations.Mapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
@@ -54,7 +54,7 @@ public class SaplingMybatisAutoConfiguration implements InitializingBean, Dispos
     /**
      * mybatis-plus分页插件
      *
-     * @author chenxiguang
+     * @author lowkey
      * @date 2022/3/31 15:42
      */
     @Bean
@@ -67,11 +67,11 @@ public class SaplingMybatisAutoConfiguration implements InitializingBean, Dispos
     /**
      * 自定义公共字段自动注入
      *
-     * @author chenxiguang
+     * @author lowkey
      * @date 2022/3/31 15:42
      */
     @Bean
-    @ConditionalOnProperty(prefix = "zf.mybatis", name = "commonFieldValueAutoFillEnable", havingValue = "true")
+    @ConditionalOnProperty(prefix = "sapling.mybatis", name = "commonFieldValueAutoFillEnable", havingValue = "true")
     public MetaObjectHandler metaObjectHandler() {
         return new CustomMetaObjectHandler();
     }
@@ -79,12 +79,12 @@ public class SaplingMybatisAutoConfiguration implements InitializingBean, Dispos
     /**
      * 数据库id选择器
      *
-     * @author chenxiguang
+     * @author lowkey
      * @date 2022/6/20 21:23
      */
     @Bean
-    public ZfDatabaseIdProvider zfDatabaseIdProvider() {
-        return new ZfDatabaseIdProvider();
+    public SaplingDatabaseIdProvider zfDatabaseIdProvider() {
+        return new SaplingDatabaseIdProvider();
     }
 
     @Override

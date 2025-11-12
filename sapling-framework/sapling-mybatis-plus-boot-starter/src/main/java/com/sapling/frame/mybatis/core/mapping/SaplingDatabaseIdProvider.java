@@ -13,11 +13,11 @@ import java.util.Properties;
 /**
  * @description: ZfDatabaseIdProvider 自定义DatabaseIdProvider
  *  mybatis 原DatabaseIdProvider 是根据 dataSource 中的数据库厂商名称，不易用。现整合为用URL来判断，与mbp中的分页插件保持一致
- * @author: chenxiguang
+ * @author: lowkey
  * @create: 2022/4/2 09:05
  **/
-public class ZfDatabaseIdProvider implements DatabaseIdProvider {
-    private static final Log logger = LogFactory.getLog(ZfDatabaseIdProvider.class);
+public class SaplingDatabaseIdProvider implements DatabaseIdProvider {
+    private static final Log logger = LogFactory.getLog(SaplingDatabaseIdProvider.class);
 
     @Override
     public void setProperties(Properties p) {
