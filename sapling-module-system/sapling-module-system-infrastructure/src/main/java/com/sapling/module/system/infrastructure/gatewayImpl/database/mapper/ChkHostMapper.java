@@ -2,7 +2,7 @@ package com.sapling.module.system.infrastructure.gatewayImpl.database.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.sapling.module.system.infrastructure.gatewayImpl.database.dataobject.ChkHostDO;
-import net.zfsy.frame.mybatis.core.mapper.BaseMapperX;
+import com.sapling.frame.mybatis.core.mapper.BaseMapperX;
 
 import java.util.ArrayList;
 import java.util.List;

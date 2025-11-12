@@ -2,9 +2,9 @@ package com.sapling.module.system.infrastructure.common.framework.configuration;
 
 import cn.hutool.core.util.ObjectUtil;
 import lombok.extern.slf4j.Slf4j;
-import net.zfsy.framework.common.exception.BasicException;
-import net.zfsy.framework.common.exception.enums.AppHttpStatus;
-import net.zfsy.framework.common.utils.enc.JasyptUtil;
+import com.sapling.framework.common.exception.BasicException;
+import com.sapling.framework.common.exception.enums.AppHttpStatus;
+import com.sapling.framework.common.utils.enc.JasyptUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.env.EnvironmentPostProcessor;

@@ -2,7 +2,7 @@ package com.sapling.server;
 
 import com.dtflys.forest.springboot.annotation.ForestScan;
 import lombok.extern.slf4j.Slf4j;
-import net.zf.framework.web.core.version.SpringBeanNameGenerator;
+import com.sapling.framework.web.core.version.SpringBeanNameGenerator;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

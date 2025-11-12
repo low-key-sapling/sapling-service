@@ -1,8 +1,8 @@
 # Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  net.zfsy.framework.core.servlet.filter.FilterRegistrationBeanAutoConfiguration,\
-  net.zfsy.framework.core.context.ContextAutoConfiguration
+  com.sapling.framework.core.servlet.filter.FilterRegistrationBeanAutoConfiguration,\
+  com.sapling.framework.core.context.ContextAutoConfiguration
 
 #Initializers
 org.springframework.context.ApplicationContextInitializer=\
-  net.zfsy.framework.core.context.ioc.IOCContext
+  com.sapling.framework.core.context.ioc.IOCContext

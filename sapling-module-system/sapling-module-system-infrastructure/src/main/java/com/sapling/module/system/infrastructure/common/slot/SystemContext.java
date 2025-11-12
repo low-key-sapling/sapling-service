@@ -2,8 +2,8 @@ package com.sapling.module.system.infrastructure.common.slot;
 
 
 import com.google.common.collect.Maps;
-import net.zfsy.framework.common.exception.ErrorCode;
-import net.zfsy.framework.common.utils.bean.BeanUtils;
+import com.sapling.framework.common.exception.ErrorCode;
+import com.sapling.framework.common.utils.bean.BeanUtils;
 
 import java.util.Map;
 

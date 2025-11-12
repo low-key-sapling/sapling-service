@@ -1,7 +1,7 @@
 package com.sapling.module.system.app.components.ioc;
 
 import lombok.extern.slf4j.Slf4j;
-import net.zfsy.framework.common.utils.enc.PrivateKeyProvider;
+import com.sapling.framework.common.utils.enc.PrivateKeyProvider;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.atomic.AtomicReference;

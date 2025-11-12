@@ -9,8 +9,8 @@ import com.sapling.module.system.infrastructure.common.constants.enums.SysParamE
 import lombok.extern.slf4j.Slf4j;
 import com.sapling.module.system.domain.biz.system.gateway.SysParamGateWay;
 import com.sapling.module.system.domain.biz.system.model.SysParamEntity;
-import net.zfsy.framework.common.exception.BasicException;
-import net.zfsy.framework.common.exception.enums.AppHttpStatus;
+import com.sapling.framework.common.exception.BasicException;
+import com.sapling.framework.common.exception.enums.AppHttpStatus;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.data.redis.core.StringRedisTemplate;

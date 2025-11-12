@@ -3,7 +3,7 @@ package com.sapling.module.system.infrastructure.gatewayImpl.components.mq;
 import cn.hutool.core.exceptions.ExceptionUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import net.zf.framework.kafka.core.helper.KafkaTemplateHelper;
+import com.sapling.framework.kafka.core.helper.KafkaTemplateHelper;
 import com.sapling.module.system.client.components.mq.dto.BusMessage;
 import com.sapling.module.system.domain.components.mq.gateway.MessageGateway;
 import com.sapling.module.system.infrastructure.common.constants.KafkaTopicConstants;

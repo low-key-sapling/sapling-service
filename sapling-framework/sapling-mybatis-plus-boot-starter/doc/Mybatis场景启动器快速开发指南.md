@@ -13,7 +13,7 @@ sapling-mybatis-plus-boot-starter 基于MyBatis-Plus 3.5.1 进行封装。同样
 - 达梦数据库，虚谷数据库，人大金仓数据库，南大通用(华库)数据库，南大通用数据库，神通数据库，瀚高数据库
 ## 增强
 * 提供了基于jdbc-url识别数据库的[DatabaseIdProvider](#DatabaseIdProvider)
-* 提供了基于`com.baomidou.mybatisplus.core.mapper.BaseMapper`的增强型Mapper`net.zfsy.frame.mybatis.core.mapper.BaseMapperX`
+* 提供了基于`com.baomidou.mybatisplus.core.mapper.BaseMapper`的增强型Mapper`mapper.core.com.sapling.frame.mybatis.BaseMapperX`
    * 在 MyBatis Plus 的 BaseMapper 的基础上拓展，提供更多的能力,建议修改模板Mybatis-X模板实现此Mapper！模板如下，修改方法见[生成代码的模板配置](#gen)
   ```java
   package ${mapperInterface.packageName};
@@ -22,7 +22,6 @@ sapling-mybatis-plus-boot-starter 基于MyBatis-Plus 3.5.1 进行封装。同样
   <#if tableClass.pkFields??>
       <#list tableClass.pkFields as field><#assign pkName>${field.shortTypeName}</#assign></#list>
   </#if>
-  import net.zfsy.frame.mybatis.core.mapper.BaseMapperX;
   
   /**
   * @author ${author!}
@@ -34,9 +33,9 @@ sapling-mybatis-plus-boot-starter 基于MyBatis-Plus 3.5.1 进行封装。同样
   
   }
   ```
-* 提供了基于`com.baomidou.mybatisplus.core.conditions.query.QueryWrapper`的增强型QueryWrapper`net.zfsy.frame.mybatis.core.query.QueryWrapperX`
+* 提供了基于`com.baomidou.mybatisplus.core.conditions.query.QueryWrapper`的增强型QueryWrapper`query.core.com.sapling.frame.mybatis.QueryWrapperX`
    * 拼接条件的方法，增加 xxxIfPresent 方法，用于判断值不存在的时候，不要拼接到条件中。
-* 提供了基于`com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper`的增强型LambdaQueryWrapper`net.zfsy.frame.mybatis.core.query.LambdaQueryWrapperX`
+* 提供了基于`com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper`的增强型LambdaQueryWrapper`query.core.com.sapling.frame.mybatis.LambdaQueryWrapperX`
    * 拼接条件的方法，增加 xxxIfPresent 方法，用于判断值不存在的时候，不要拼接到条件中。
 
 ## 快速开始

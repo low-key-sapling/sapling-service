@@ -47,7 +47,7 @@ For each datasource:
 
 **Purpose**: Configuration class for Kafka security settings
 
-**Location**: `net.zf.framework.kafka.core.properties.ZfKafkaSecurity`
+**Location**: `properties.core.com.sapling.framework.kafka.ZfKafkaSecurity`
 
 **Properties**:
 ```java

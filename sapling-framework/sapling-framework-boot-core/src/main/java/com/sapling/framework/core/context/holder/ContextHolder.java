@@ -1,0 +1,184 @@
+package com.sapling.framework.core.context.holder;
+
+import com.alibaba.ttl.TransmittableThreadLocal;
+
+import com.sapling.framework.core.helper.SystemNumberHelper;
+import com.sapling.framework.common.constants.HeaderInfo;
+import com.sapling.framework.common.utils.request.RequestUtils;
+
+import java.util.Objects;
+import java.util.UUID;
+
+/**
+ * @Description: 全链路追踪上下文
+ * @author Artisan
+ */
+public class ContextHolder {
+
+    private static final ThreadLocal<RequestHolder> CONTEXT = new TransmittableThreadLocal<RequestHolder>() {
+        @Override
+        protected RequestHolder initialValue() {
+            return new RequestHolder();
+        }
+    };
+
+    /**
+     * 设置当前线程持有的数据源
+     */
+    public static void set(RequestHolder requestHolder) {
+        CONTEXT.set(requestHolder);
+    }
+
+    /**
+     * 获取当前线程持有的数据源
+     */
+    public static RequestHolder get() {
+        return CONTEXT.get();
+    }
+
+    /**
+     * 删除当前线程持有的数据源
+     */
+    public static void remove() {
+        if (!CONTEXT.get().isServletContext()) {
+            CONTEXT.remove();
+        }
+    }
+
+    public static class RequestHolder {
+        /**
+         * 事务唯一编号
+         */
+        private String traceId;
+        /**
+         * 系统编号|标识
+         */
+        private String systemNumber;
+
+        /**
+         * 开启时间
+         */
+        private Long startTime;
+         /**
+         * 客户端IP
+         */
+        private String clientIp;
+        /**
+         * 服务端IP
+         */
+        private String serverIp;
+        /**
+         * (逻辑)是否servlet容器上下文，默认：false
+         */
+        private boolean servletContext;
+        /**
+         * 当前请求所处的阶段(目前主要为控制器参数异常时日志记录判定)
+         * REQUEST_MAPPING-RequestMappingHandlerMapping校验转发阶段
+         * REQUEST_AOP-Request请求AOP拦截阶段
+         */
+        private Stage stage;
+
+
+        public RequestHolder() {
+            this.startTime = System.currentTimeMillis();
+            this.systemNumber = SystemNumberHelper.getSystemNumber();
+            if (RequestUtils.isServletContext()) {
+                this.traceId = RequestUtils.getRequest().getHeader(HeaderInfo.TRACE_ID);
+                this.clientIp = RequestUtils.getClientIp();
+                this.serverIp = RequestUtils.getServerIp();
+                this.servletContext = true;
+            }
+            if (Objects.isNull(traceId)) {
+                this.traceId = UUID.randomUUID().toString();
+            }
+            this.stage = Stage.MAPPING;
+        }
+
+        public String getTraceId() {
+            return traceId;
+        }
+
+        public void setTraceId(String traceId) {
+            this.traceId = traceId;
+        }
+
+        public Long getStartTime() {
+            return startTime;
+        }
+
+        public void setStartTime(Long startTime) {
+            this.startTime = startTime;
+        }
+
+        public String getClientIp() {
+            return clientIp;
+        }
+
+        public void setClientIp(String clientIp) {
+            this.clientIp = clientIp;
+        }
+
+        public String getServerIp() {
+            return serverIp;
+        }
+
+        public void setServerIp(String serverIp) {
+            this.serverIp = serverIp;
+        }
+
+        public String getSystemNumber() {
+            return systemNumber;
+        }
+
+        public void setSystemNumber(String systemNumber) {
+            this.systemNumber = systemNumber;
+        }
+
+        public boolean isServletContext() {
+            return servletContext;
+        }
+
+        public void setServletContext(boolean servletContext) {
+            this.servletContext = servletContext;
+        }
+
+        public Stage getStage() {
+            return stage;
+        }
+
+        public void setStage(Stage stage) {
+            this.stage = stage;
+        }
+
+        @Override
+        public String toString() {
+            return "RequestHolder{" +
+                    "traceId='" + traceId + '\'' +
+                    ", systemNumber='" + systemNumber + '\'' +
+                    ", startTime=" + startTime +
+                    ", clientIp='" + clientIp + '\'' +
+                    ", serverIp='" + serverIp + '\'' +
+                    ", servletContext=" + servletContext +
+                    ", stage=" + stage +
+                    '}';
+        }
+    }
+
+    /**
+     * API请求阶段
+     */
+    public enum Stage {
+        //RequestMappingHandlerMapping校验转发阶段
+        MAPPING,
+        //Request请求AOP拦截阶段
+        REQUEST,
+        //Feign请求阶段
+        FEIGN,
+        //RestTemplate请求阶段
+        HTTP,
+        //Mybatis日志记录
+        MYBATIS,
+        //其它阶段
+        OTHER;
+    }
+}

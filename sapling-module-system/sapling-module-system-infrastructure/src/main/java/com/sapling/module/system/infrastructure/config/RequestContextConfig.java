@@ -1,6 +1,6 @@
 package com.sapling.module.system.infrastructure.config;
 
-import net.zfsy.framework.core.context.decorator.RequestContextDecorator;
+import com.sapling.framework.core.context.decorator.RequestContextDecorator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

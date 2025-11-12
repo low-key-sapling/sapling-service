@@ -3,7 +3,7 @@ package com.sapling.module.system.infrastructure.config;
 import com.sapling.module.system.infrastructure.common.framework.properties.ThreadPoolProperties;
 import com.sapling.module.system.infrastructure.common.framework.threadpool.MonitoredRejectedExecutionHandler;
 import com.sapling.module.system.infrastructure.common.framework.threadpool.MonitoredThreadFactory;
-import net.zfsy.framework.core.context.decorator.RequestContextDecorator;
+import com.sapling.framework.core.context.decorator.RequestContextDecorator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;

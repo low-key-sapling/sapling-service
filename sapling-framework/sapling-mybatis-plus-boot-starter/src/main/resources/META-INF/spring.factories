@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  net.zfsy.frame.mybatis.config.ZhongFuMybatisAutoConfiguration
+  com.sapling.frame.mybatis.config.ZhongFuMybatisAutoConfiguration

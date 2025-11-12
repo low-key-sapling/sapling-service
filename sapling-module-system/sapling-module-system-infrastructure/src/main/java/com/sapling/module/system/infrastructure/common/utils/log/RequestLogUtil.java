@@ -2,11 +2,9 @@ package com.sapling.module.system.infrastructure.common.utils.log;
 
 import cn.hutool.core.util.ObjectUtil;
 import lombok.extern.slf4j.Slf4j;
-import net.zfsy.framework.common.utils.servlet.ServletUtils;
+import com.sapling.framework.common.utils.servlet.ServletUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;

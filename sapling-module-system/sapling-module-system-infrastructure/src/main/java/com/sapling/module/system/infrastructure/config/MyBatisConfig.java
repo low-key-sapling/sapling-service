@@ -1,6 +1,6 @@
 package com.sapling.module.system.infrastructure.config;
 
-import net.zfsy.frame.mybatis.core.handler.CustomMetaObjectHandler;
+import com.sapling.frame.mybatis.core.handler.CustomMetaObjectHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
