@@ -268,9 +268,9 @@
             </dependency>
 
             <dependency>
-                <groupId>net.zfsy</groupId>
-                <artifactId>zf-elasticsearch-spring-boot-starter</artifactId>
-                <version>${elasticsearch.version}</version>
+                <groupId>com.sapling</groupId>
+                <artifactId>sapling-elasticsearch-spring-boot-starter</artifactId>
+                <version>${revision}</version>
             </dependency>
 
             <dependency>

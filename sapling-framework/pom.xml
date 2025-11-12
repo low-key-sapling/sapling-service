@@ -15,6 +15,7 @@
         <module>sapling-framework-boot-common</module>
         <module>sapling-framework-boot-core</module>
         <module>sapling-mybatis-plus-boot-starter</module>
+        <module>sapling-elasticsearch-spring-boot-starter</module>
     </modules>
 
     <artifactId>sapling-framework</artifactId>
