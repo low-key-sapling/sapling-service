@@ -64,7 +64,7 @@
         <highgo-jdbc.version>6.2.3</highgo-jdbc.version>
         <highgo-jdbc.version>6.0.3.jre8</highgo-jdbc.version>
         <alibaba.fastjson.version>1.2.83</alibaba.fastjson.version>
-        <apache.commons.lang3.version>3.12.0</apache.commons.lang3.version>
+        <apache.commons.lang3.version>3.19.0</apache.commons.lang3.version>
         <apache.commons.collections4.version>4.4</apache.commons.collections4.version>
         <apache.commons.io.version>2.11.0</apache.commons.io.version>
         <alibaba.ttl.version>2.12.6</alibaba.ttl.version>
@@ -279,6 +279,10 @@
                     <exclusion>
                         <groupId>org.slf4j</groupId>
                         <artifactId>slf4j-reload4j</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>commons-lang</groupId>
+                        <artifactId>commons-lang</artifactId>
                     </exclusion>
                 </exclusions>
                 <version>${bboss.elastic.version}</version>

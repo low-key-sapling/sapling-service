@@ -1,12 +1,12 @@
 package com.sapling.framework.elasticsearch.service;
 
 import cn.hutool.core.util.ClassUtil;
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
 import com.sapling.framework.elasticsearch.annotations.ESDsl;
 import com.sapling.framework.elasticsearch.annotations.ESMapping;
 import com.sapling.framework.elasticsearch.enums.ESMappingType;
 import com.sapling.framework.elasticsearch.helper.LambdaHashMap;
-import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
@@ -39,6 +39,10 @@ public abstract class AbstractElasticBaseService<T> {
      */
     protected String indexName;
     /**
+     * 索引模板名称
+     */
+    protected String indexTemplateName;
+    /**
      * 索引类型
      */
     protected String indexType;
@@ -61,8 +65,9 @@ public abstract class AbstractElasticBaseService<T> {
             ESDsl esDsl = clazz.getAnnotation(ESDsl.class);
             this.xmlPath = esDsl.value();
             this.indexName = esDsl.indexName();
+            this.indexTemplateName = esDsl.indexName() + "_template";
             //如果类型为空,则采用索引名作为其类型
-            this.indexType = StringUtils.isEmpty(esDsl.indexType()) ? esDsl.indexName() : esDsl.indexType();
+            this.indexType = StrUtil.isBlank(esDsl.indexType()) ? esDsl.indexName() : esDsl.indexType();
         } else {
             throw new RuntimeException(clazz.getName() + "缺失注解[@ESDsl]");
         }
@@ -82,6 +87,7 @@ public abstract class AbstractElasticBaseService<T> {
 
     /**
      * 构建JSON
+     *
      * @param field
      * @return
      */
