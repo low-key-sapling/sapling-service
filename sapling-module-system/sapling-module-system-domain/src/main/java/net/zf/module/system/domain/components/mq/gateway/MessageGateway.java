@@ -1,9 +1,0 @@
-package net.zf.module.system.domain.components.mq.gateway;
-
-import net.zf.module.system.client.components.mq.dto.BusMessage;
-
-public interface MessageGateway {
-
-    <T> boolean sendMessage(BusMessage<T> message);
-
-}
