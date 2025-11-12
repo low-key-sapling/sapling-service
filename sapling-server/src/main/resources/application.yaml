@@ -5,7 +5,7 @@ server:
 # Spring
 spring:
   profiles:
-    include: biz,kafka,monitor,mybatisplus,redis,security,liteflow,polaris,forest,security,elasticsearch
+    include: sapling,kafka,monitor,mybatisplus,redis,security,liteflow,polaris,forest,security,elasticsearch
     active: prod
   mvc:
     annotation-driven: true
