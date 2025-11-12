@@ -53,9 +53,9 @@ sapling-mybatis-plus-boot-starter 基于MyBatis-Plus 3.5.1 进行封装。同样
 
 ```properties
 # 否开启默认字段填充，默认为false。开启后，会自动在执行 insert 和 update 语句时，自动插入或更新 createTime updateTime 字段
-zf.mybatis.common-field-value-auto-fill-enable=false
+sapling.mybatis.common-field-value-auto-fill-enable=false
 # 扫描mapper的根路径，同@MapperScan
-zf.mybatis.base-package=com.sapling.demo
+sapling.mybatis.base-package=com.sapling.demo
 spring.datasource.url=jdbc:mysql://localhost:3306/framework?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
 spring.datasource.username=root
 spring.datasource.password=****

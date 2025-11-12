@@ -45,11 +45,11 @@ import org.springframework.context.annotation.Configuration;
  * @author cxg
  */
 @Configuration
-@EnableConfigurationProperties(ZfMybatisProperties.class)
+@EnableConfigurationProperties(SaplingMybatisProperties.class)
 @MapperScan(annotationClass = Mapper.class)
-public class ZhongFuMybatisAutoConfiguration implements InitializingBean, DisposableBean {
+public class SaplingMybatisAutoConfiguration implements InitializingBean, DisposableBean {
 
-    private static final Logger logger = LoggerFactory.getLogger(ZhongFuMybatisAutoConfiguration.class);
+    private static final Logger logger = LoggerFactory.getLogger(SaplingMybatisAutoConfiguration.class);
 
     /**
      * mybatis-plus分页插件

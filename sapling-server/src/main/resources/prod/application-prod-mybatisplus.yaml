@@ -1,7 +1,7 @@
-zf:
+sapling:
   mybatis:
     # 扫描 mapper 的根路径，同 @MapperScan
-    base-package: net.zfsy.demo
+    base-package: com.sapling
     # 是否开启默认字段填充，默认为false。开启后，会自动在执行 insert 和 update 语句时，自动插入或更新 createTime 和 updateTime 字段
     common-field-value-auto-fill-enable: false
 mybatis-plus:
@@ -15,5 +15,5 @@ spring:
 
 logging:
   level:
-    net.zf.module.system.infrastructure.gatewayImpl.database.mapper.policyDistribute: DEBUG   # 你的 Mapper 接口包路径
+    com.sapling.module.system.infrastructure.gatewayImpl.database.mapper.policyDistribute: DEBUG   # 你的 Mapper 接口包路径
     org.springframework.jdbc: DEBUG # 打印 JDBC SQL
