@@ -1,5 +1,8 @@
 package com.sapling.framework.elasticsearch.service;
 
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.json.JSONObject;
+import cn.hutool.json.JSONUtil;
 import org.frameworkset.elasticsearch.boot.BBossESStarter;
 import org.frameworkset.elasticsearch.client.ClientInterface;
 import org.frameworkset.elasticsearch.client.ClientUtil;
@@ -60,6 +63,26 @@ public class ElasticBaseService<T> extends AbstractElasticBaseService<T> {
     }
 
     /**
+     * actionName xml中创建模板的方法名称,默认：createTemplate
+     * 自动创建索引
+     */
+    public void createIndexTemplate(String actionName) {
+        ClientInterface restClient = bossESStarter.getConfigRestClient(this.xmlPath);
+        //判断模板是否创建,未创建开始创建模板
+        String allTemplateResult = restClient.executeHttp("/_template/", ClientUtil.HTTP_GET);
+        JSONObject allTemplateSet = JSONUtil.parseObj(allTemplateResult);
+        if (!allTemplateSet.containsKey(this.indexTemplateName)) {
+            try {
+                //创建模板
+                String templateNameResult = restClient.createTempate(this.indexTemplateName, StrUtil.isEmpty(actionName) ? "createTemplate" : actionName);
+                log.info("创建模板{}成功：{}", this.indexTemplateName, templateNameResult);
+            } catch (Exception e) {
+                log.error("创建模板{}失败", this.indexTemplateName, e);
+            }
+        }
+    }
+
+    /**
      * 删除索引
      */
     public String delIndex() {
@@ -97,10 +120,10 @@ public class ElasticBaseService<T> extends AbstractElasticBaseService<T> {
         this.createIndex();
         int start = 0;
         int rows = 100;
-        Integer size;
+        int size;
         do {
             List<T> list = pageDate(start, rows);
-            if (list.size() > 0) {
+            if (!list.isEmpty()) {
                 //批量同步信息
                 bossESStarter.getRestClient().addDocuments(indexName, indexType, ts, "refresh=" + refresh);
             }
