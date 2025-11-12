@@ -1,15 +1,10 @@
 package com.sapling.module.system.app.scheduler;
 
-import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.json.JSONUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import com.sapling.module.system.app.components.ioc.AppPrivateKeyProvider;
-import com.sapling.module.system.infrastructure.common.framework.properties.PolarisProperties;
-import net.zfsy.RegistryCenter;
 import com.sapling.framework.common.utils.enc.Sm2SignUtil;
 import com.sapling.framework.common.utils.enc.Sm2Utils;
-import net.zfsy.model.ServiceModel;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.boot.ApplicationArguments;
@@ -29,11 +24,9 @@ import java.util.Map;
 public class ServiceRegistrationRunner implements ApplicationRunner {
 
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
-    
+
     @Resource
     private AppPrivateKeyProvider privateKeyProvider;
-    @Resource
-    private PolarisProperties polarisProperties;
 
     @Override
     public void run(ApplicationArguments args) {
@@ -45,9 +38,7 @@ public class ServiceRegistrationRunner implements ApplicationRunner {
             new ServiceRegistrationTemplate()
                     .setKeyPairGenerator(new Sm2KeyPairGenerator())
                     .setMetadataPreparer(new DefaultMetadataPreparer())
-                    .setServiceRegistrar(new RegistryCenterServiceRegistrar())
                     .setPrivateKeyProvider(privateKeyProvider)
-                    .setPolarisProperties(polarisProperties)
                     .execute();
             log.info("系统启动-服务注册初始化完成");
         } catch (Exception e) {
@@ -62,9 +53,7 @@ public class ServiceRegistrationRunner implements ApplicationRunner {
     private static class ServiceRegistrationTemplate {
         private KeyPairGenerator keyPairGenerator;
         private MetadataPreparer metadataPreparer;
-        private ServiceRegistrar serviceRegistrar;
         private AppPrivateKeyProvider privateKeyProvider;
-        private PolarisProperties polarisProperties;
 
         public ServiceRegistrationTemplate setKeyPairGenerator(KeyPairGenerator keyPairGenerator) {
             this.keyPairGenerator = keyPairGenerator;
@@ -76,25 +65,16 @@ public class ServiceRegistrationRunner implements ApplicationRunner {
             return this;
         }
 
-        public ServiceRegistrationTemplate setServiceRegistrar(ServiceRegistrar serviceRegistrar) {
-            this.serviceRegistrar = serviceRegistrar;
-            return this;
-        }
-        
         public ServiceRegistrationTemplate setPrivateKeyProvider(AppPrivateKeyProvider privateKeyProvider) {
             this.privateKeyProvider = privateKeyProvider;
             return this;
         }
 
-        public ServiceRegistrationTemplate setPolarisProperties(PolarisProperties polarisProperties) {
-            this.polarisProperties = polarisProperties;
-            return this;
-        }
 
         public void execute() {
             // 1. 生成密钥对
             Map<String, String> keyPair = keyPairGenerator.generate();
-            if (keyPair == null || !validateKeyPair(keyPair)) {
+            if (!validateKeyPair(keyPair)) {
                 log.error("系统启动-生成密钥对失败或密钥对无效");
                 return;
             }
@@ -109,9 +89,6 @@ public class ServiceRegistrationRunner implements ApplicationRunner {
                 return;
             }
             log.info("系统启动-准备元数据成功: {}", metadata);
-
-            // 3. 服务注册
-            serviceRegistrar.register(polarisProperties, metadata);
         }
 
         private boolean validateKeyPair(Map<String, String> keyPair) {
@@ -174,34 +151,4 @@ public class ServiceRegistrationRunner implements ApplicationRunner {
             }
         }
     }
-
-    /**
-     * 服务注册器接口
-     */
-    private interface ServiceRegistrar {
-        void register(PolarisProperties polarisProperties, Map<String, Object> metadata);
-    }
-
-    /**
-     * 注册中心服务注册器
-     */
-    private static class RegistryCenterServiceRegistrar implements ServiceRegistrar {
-        @Override
-        public void register(PolarisProperties polarisProperties, Map<String, Object> metadata) {
-            try {
-                // 读取本地配置文件内容
-                ServiceModel serviceModel = BeanUtil.copyProperties(polarisProperties, ServiceModel.class);
-                // 准备元数据
-                String metadataJson = OBJECT_MAPPER.writeValueAsString(metadata);
-                serviceModel.setMetadata(metadataJson);
-                // 启动服务注册
-                log.warn("准备注册服务，注册服务相关信息: {}", JSONUtil.toJsonStr(serviceModel));
-                RegistryCenter.init(serviceModel, true);
-            } catch (Exception e) {
-                log.error("服务注册失败:{}", ExceptionUtils.getStackTrace(e));
-            }
-        }
-    }
-
-
 } 
