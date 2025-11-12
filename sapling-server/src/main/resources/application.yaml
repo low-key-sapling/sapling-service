@@ -1,7 +1,7 @@
 server:
   port: 29002
   servlet:
-    context-path: /biz
+    context-path: /sapling
 # Spring
 spring:
   profiles:
@@ -16,11 +16,11 @@ spring:
   main:
     allow-bean-definition-overriding: true
   application:
-    name: epc_biz
+    name: sapling
 # logging:
 logging:
   config: classpath:logback-spring.xml
   file:
-    name: /var/log/mbws/epc_biz/${spring.application.name}.log
+    name: /var/log/sapling/sapling/${spring.application.name}.log
   level:
     org.apache.kafka: ERROR

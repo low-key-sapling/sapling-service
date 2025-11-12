@@ -5,7 +5,7 @@
     <property name="LOG_LEVEL" value="info" />
 
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
-    <property name="LOG_HOME" value="/var/log/mbws/epcbiz" />
+    <property name="LOG_HOME" value="/var/log/sapling/sapling" />
 
     <!--控制台日志， 控制台输出 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -17,12 +17,12 @@
 
     <!--文件日志， 按照每天生成日志文件 -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!-- 当前正在写入的日志文件名（固定为 epcbiz-${LOG_LEVEL}.log） -->
-        <file>${LOG_HOME}/epcbiz-${LOG_LEVEL}.log</file>
+        <!-- 当前正在写入的日志文件名（固定为 sapling-${LOG_LEVEL}.log） -->
+        <file>${LOG_HOME}/sapling-${LOG_LEVEL}.log</file>
         <!-- 日志滚动配置 -->
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!--日志文件输出的文件名，%i是文件索引-->
-            <FileNamePattern>${LOG_HOME}/${LOG_LEVEL}/epcbiz-${LOG_LEVEL}.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <FileNamePattern>${LOG_HOME}/${LOG_LEVEL}/sapling-${LOG_LEVEL}.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
             <!--日志文件最大的大小-->
             <maxFileSize>50MB</maxFileSize>
             <!--日志文件保留天数-->

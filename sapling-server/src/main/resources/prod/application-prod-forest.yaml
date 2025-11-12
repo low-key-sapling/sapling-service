@@ -16,4 +16,4 @@ forest:
   log-response-content: true   # 打开/关闭Forest响应内容日志（默认为 false）
   async-mode: platform         # [自v1.5.27版本起可用] 异步模式（默认为 platform）
   variables:
-    biz_url: http://sapling_service/biz
+    sapling_url: http://sapling_service/sapling
