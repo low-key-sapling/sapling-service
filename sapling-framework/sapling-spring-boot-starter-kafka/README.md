@@ -18,8 +18,8 @@
 
 ```xml
     <dependency>
-        <groupId>net.zfsy</groupId>
-        <artifactId>zf-kafka-spring-boot-starter</artifactId>
+        <groupId>com.sapling</groupId>
+        <artifactId>sapling-kafka-spring-boot-starter</artifactId>
         <version>${xxx}</version>  <!-- 目前已发布 1.0.0 -->
     </dependency>
 ```

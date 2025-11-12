@@ -16,7 +16,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SuppressWarnings("SpringComponentScan")
 @SpringBootApplication
 @ComponentScan(basePackages = {"${endpoint.info.base-package}.server", "${endpoint.info.base-package}.module"}, nameGenerator = SpringBeanNameGenerator.class)
-@MapperScan("net.zf.module.system.infrastructure.gatewayImpl.database.mapper")
+@MapperScan("com.sapling.module.system.infrastructure.gatewayImpl.database.mapper")
 @ForestScan(basePackages = {"net.zf.module.system.client.components.rc"})
 public class EndpointServerApplication {
 
