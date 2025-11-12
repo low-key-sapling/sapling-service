@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @author mbws
  */
 @Configuration
-@ComponentScan(basePackages = "net.zf.framework.web.core")
+@ComponentScan(basePackages = "com.sapling.framework.web.core")
 public class EndpointWebAutoConfiguration implements WebMvcConfigurer {
 
     @Bean

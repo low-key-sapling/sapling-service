@@ -1,7 +1,7 @@
 endpoint:
   info:
     version: 1.0.0
-    base-package: net.zf
+    base-package: com.sapling
   
   # 定时任务配置
   scheduler:
