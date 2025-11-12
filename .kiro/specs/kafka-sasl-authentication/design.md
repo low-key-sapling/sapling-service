@@ -191,7 +191,7 @@ zf:
             password: kafka-password
           consumer:
             container-factory: mbwsKafkaListenerContainerFactory
-            group-id: epc-biz-group
+            group-id: sapling-group
             auto-offset-reset: latest
           producer:
             kafka-template: mbwsKafkaTemplate

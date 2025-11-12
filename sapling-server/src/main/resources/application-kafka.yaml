@@ -29,7 +29,7 @@ spring:
       #value的解码方式
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       #消费者组groupid
-      group-id: epc-biz-group
+      group-id: sapling-group
       #消费者最大拉取的消息数量
       max-poll-records: 1000
       #一次请求中服务器返回的最小数据量(以字节为单位),默认1，这里设置5kb,对应kafka的参数fetch.min.bytes

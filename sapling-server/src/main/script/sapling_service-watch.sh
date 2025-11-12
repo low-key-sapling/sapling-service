@@ -3,7 +3,7 @@
 sapling_service_home_path=`pwd`/..
 logfile=$sapling_service_home_path/logs/watch.log
 #修改2： 自己Jar包的路径
-APP_NAME=epc-biz.jar
+APP_NAME=sapling_service.jar
 touch $logfile
 while [ 1 -eq 1 ]
 do

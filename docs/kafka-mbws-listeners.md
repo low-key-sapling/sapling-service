@@ -71,7 +71,7 @@ endpoint-module-system/
 
 ### Kafka配置
 在`application-kafka.yaml`中已配置：
-- 消费者组：`epc-biz-group`
+- 消费者组：`sapling-group`
 - 手动确认模式：`manual`
 - 并发数：12
 

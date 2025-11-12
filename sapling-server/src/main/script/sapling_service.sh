@@ -23,7 +23,7 @@ echo "prefix:$prefix" >> ${logfile} 2>&1
 source $mbwsjvm_path
 COMMON_JVM=$(cat $current_path/../../../zfmbwsjvm.option)
 #Jar包的路径
-APP_NAME=${sapling_service_home_path}/epc-biz.jar
+APP_NAME=${sapling_service_home_path}/sapling_service.jar
 
 # 其余无需修改，直接用即可
 #使用说明，用来提示输入参数

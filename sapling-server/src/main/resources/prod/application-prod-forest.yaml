@@ -16,8 +16,4 @@ forest:
   log-response-content: true   # 打开/关闭Forest响应内容日志（默认为 false）
   async-mode: platform         # [自v1.5.27版本起可用] 异步模式（默认为 platform）
   variables:
-    biz_url: http://epc-biz/biz
-    chkProof_url: http://mbc-chkproof/ZFSoft_ChkProof
-    itx_api_url: http://mbc-api/api
-    itx_core_url: http://mbc-core/core
-    datacenter_url: http://epc-dataCenter/datacenter
+    biz_url: http://sapling_service/biz

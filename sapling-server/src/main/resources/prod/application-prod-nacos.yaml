@@ -5,7 +5,7 @@
 #        enable: false
 #      discovery:
 #        server-addr: 127.0.0.1:57438 # Nacos注册中心地址
-#        service: mbc-epc-biz # Nacos服务名
+#        service: mbc-sapling # Nacos服务名
 #        fail-fast: false
 #        username: enc`s/GmkCs+s44FBT3EqglCwA==
 #        password: enc`Uzm9+ZaXPGeOpIRI5oNplbOMa6rGK3Ou
