@@ -7,8 +7,6 @@
         <version>${revision}</version>
     </parent>
 
-
-    <groupId>net.zfsy</groupId>
     <artifactId>sapling-framework-boot-common</artifactId>
     <packaging>jar</packaging>
 

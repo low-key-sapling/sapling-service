@@ -313,13 +313,13 @@
 
             <!-- 自定义框架 -->
             <dependency>
-                <groupId>net.zfsy</groupId>
+                <groupId>com.sapling</groupId>
                 <artifactId>sapling-framework-boot-core</artifactId>
                 <version>${revision}</version>
             </dependency>
 
             <dependency>
-                <groupId>net.zfsy</groupId>
+                <groupId>com.sapling</groupId>
                 <artifactId>sapling-framework-boot-common</artifactId>
                 <version>${revision}</version>
             </dependency>
