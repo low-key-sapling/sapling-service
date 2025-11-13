@@ -26,12 +26,12 @@ import java.util.*;
 public class GsonUtils {
 
     /**
-     * 默认的 Gson 实例（不格式化输出）
+     * 默认的 Gson 实例（序列化 null 值）
      */
     private static final Gson GSON;
 
     /**
-     * 格式化输出的 Gson 实例
+     * 格式化输出的 Gson 实例（序列化 null 值）
      */
     private static final Gson GSON_PRETTY;
 
@@ -48,17 +48,19 @@ public class GsonUtils {
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     static {
-        // 初始化默认 Gson
-        GSON = createGsonBuilder().create();
+        // 初始化默认 Gson（序列化 null 值）
+        GSON = createGsonBuilder()
+                .serializeNulls()
+                .create();
 
-        // 初始化格式化 Gson
+        // 初始化格式化 Gson（序列化 null 值）
         GSON_PRETTY = createGsonBuilder()
+                .serializeNulls()
                 .setPrettyPrinting()
                 .create();
 
-        // 初始化不序列化 null 的 Gson
+        // 初始化不序列化 null 的 Gson（Gson 默认不序列化 null）
         GSON_NO_NULLS = createGsonBuilder()
-                .serializeNulls()
                 .create();
     }
 
@@ -83,7 +85,7 @@ public class GsonUtils {
     // ==================== 对象转 JSON 字符串 ====================
 
     /**
-     * 将对象转换为 JSON 字符串
+     * 将对象转换为 JSON 字符串（包含 null 值字段）
      *
      * @param obj 要转换的对象
      * @return JSON 字符串
@@ -101,7 +103,7 @@ public class GsonUtils {
     }
 
     /**
-     * 将对象转换为格式化的 JSON 字符串（带缩进）
+     * 将对象转换为格式化的 JSON 字符串（带缩进，包含 null 值字段）
      *
      * @param obj 要转换的对象
      * @return 格式化的 JSON 字符串
@@ -119,10 +121,10 @@ public class GsonUtils {
     }
 
     /**
-     * 将对象转换为 JSON 字符串（不包含 null 值）
+     * 将对象转换为 JSON 字符串（不包含值为 null 的字段）
      *
      * @param obj 要转换的对象
-     * @return JSON 字符串
+     * @return JSON 字符串（不包含值为 null 的字段）
      */
     public static String toJsonStringNoNulls(Object obj) {
         if (obj == null) {
