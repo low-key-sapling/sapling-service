@@ -20,6 +20,17 @@
     <dependencies>
 
         <dependency>
+            <groupId>com.sapling</groupId>
+            <artifactId>sapling-framework-boot-core</artifactId>
+        </dependency>
+
+        <!-- 公共组件包 -->
+        <dependency>
+            <groupId>com.sapling</groupId>
+            <artifactId>sapling-framework-boot-common</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.alibaba.cola</groupId>
             <artifactId>cola-component-dto</artifactId>
         </dependency>
@@ -33,11 +44,6 @@
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
         </dependency>
 
         <dependency>
@@ -58,15 +64,6 @@
         <dependency>
             <groupId>net.zfsy</groupId>
             <artifactId>polaris</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.sapling</groupId>
-            <artifactId>sapling-framework-boot-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.sapling</groupId>
-            <artifactId>sapling-framework-boot-common</artifactId>
         </dependency>
 
     </dependencies>
