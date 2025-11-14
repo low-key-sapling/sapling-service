@@ -11,13 +11,13 @@ import com.sapling.framework.common.utils.io.IOUtils;
 import com.sapling.framework.common.utils.json.JSONUtils;
 import com.sapling.framework.common.utils.request.RequestUtils;
 import com.sapling.framework.core.servlet.DelegateRequestWrapper;
+import jakarta.servlet.http.HttpServletRequest;
 import org.aopalliance.intercept.MethodInvocation;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.CollectionUtils;
 
-import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Parameter;
 import java.util.*;
 

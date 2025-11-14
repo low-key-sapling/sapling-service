@@ -13,23 +13,23 @@
     <description>基础 pom 文件，管理整个项目的依赖版本</description>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <revision>1.0.0</revision>
         <!-- 统一依赖管理 -->
-        <spring.boot.version>2.7.18</spring.boot.version>
+        <spring.boot.version>3.2.5</spring.boot.version>
         <!-- Web 相关 -->
-        <servlet.version>2.5</servlet.version>
-        <redisson.version>3.22.0</redisson.version>
+        <servlet.version>6.0.0</servlet.version>
+        <redisson.version>3.27.2</redisson.version>
         <!-- Test 测试相关 -->
         <podam.version>7.2.6.RELEASE</podam.version>
         <jedis-mock.version>0.1.16</jedis-mock.version>
         <mockito-inline.version>3.9.0</mockito-inline.version>
         <!-- 工具类相关 -->
-        <lombok.version>1.18.20</lombok.version>
-        <mapstruct.version>1.4.2.Final</mapstruct.version>
+        <lombok.version>1.18.30</lombok.version>
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <hutool.version>5.8.40</hutool.version>
         <velocity.version>2.3</velocity.version>
@@ -48,16 +48,16 @@
         <liteflow.version>2.15.0</liteflow.version>
         <kotime.version>2.5.0</kotime.version>
         <jasypt.version>1.9.3</jasypt.version>
-        <cola.components.version>4.0.0</cola.components.version>
+        <cola.components.version>5.0.0</cola.components.version>
         <tlog.version>1.5.2</tlog.version>
         <commons-io.version>2.15.1</commons-io.version>
-        <commons-lang3.version>3.12.0</commons-lang3.version>
-        <logback.version>1.2.13</logback.version>
-        <resilience4j.version>1.7.1</resilience4j.version>
+        <commons-lang3.version>3.14.0</commons-lang3.version>
+        <logback.version>1.4.14</logback.version>
+        <resilience4j.version>2.2.0</resilience4j.version>
         <!-- 三方组件版本管理 -->
         <!-- MyBatis 相关 -->
-        <mybatis.plus.version>3.5.3.1</mybatis.plus.version>
-        <mysql-connector.version>8.0.28</mysql-connector.version>
+        <mybatis.plus.version>3.5.5</mybatis.plus.version>
+        <mysql-connector.version>8.0.33</mysql-connector.version>
         <Dm7JdbcDriver.version>7.1.4.74</Dm7JdbcDriver.version>
         <kingbase8.version>8.6.0</kingbase8.version>
         <oscarJDBC.version>7.0.85x20180613133024</oscarJDBC.version>
@@ -73,7 +73,7 @@
         <jpinyin.version>1.1.8</jpinyin.version>
         <jaxb.api.version>2.3.1</jaxb.api.version>
         <commons-pool2.version>2.11.1</commons-pool2.version>
-        <jackson.version>2.13.5</jackson.version>
+        <jackson.version>2.15.4</jackson.version>
         <junit.version>4.13.2</junit.version>
         <j2cache.core.version>2.8.5-release</j2cache.core.version>
         <j2cache.spring.version>2.8.0-release</j2cache.spring.version>
@@ -90,8 +90,8 @@
         <snakeyaml.version>2.5</snakeyaml.version>
         <protobuf-java.version>3.25.8</protobuf-java.version>
         <xnio.version>3.8.17.Final</xnio.version>
-        <tomcat.version>9.0.109</tomcat.version>
-        <kafka.client.version>3.4.0</kafka.client.version>
+        <tomcat.version>11.0.14</tomcat.version>
+        <kafka.client.version>3.6.1</kafka.client.version>
         <spring.kafka.version>2.9.11</spring.kafka.version>
         <json-path.version>2.9.0</json-path.version>
         <dom4j.version>2.1.5</dom4j.version>
@@ -166,6 +166,12 @@
                 <version>${revision}</version>
             </dependency>
 
+            <!-- Jakarta Servlet API -->
+            <dependency>
+                <groupId>jakarta.servlet</groupId>
+                <artifactId>jakarta.servlet-api</artifactId>
+                <version>${servlet.version}</version>
+            </dependency>
 
             <!-- 性能分析工具 -->
             <dependency>
@@ -317,7 +323,7 @@
             <!-- 弹性框架 -->
             <dependency>
                 <groupId>io.github.resilience4j</groupId>
-                <artifactId>resilience4j-spring-boot2</artifactId>
+                <artifactId>resilience4j-spring-boot3</artifactId>
                 <version>${resilience4j.version}</version>
             </dependency>
 
@@ -339,19 +345,6 @@
             <dependency>
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson-spring-boot-starter</artifactId>
-                <version>${redisson.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.redisson</groupId>
-                        <artifactId>redisson-spring-data-31</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-
-            <!-- 修复  CVE-2023-42809 -->
-            <dependency>
-                <groupId>org.redisson</groupId>
-                <artifactId>redisson-spring-data-27</artifactId>
                 <version>${redisson.version}</version>
             </dependency>
 

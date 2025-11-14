@@ -42,20 +42,10 @@
             <artifactId>redisson-spring-boot-starter</artifactId>
             <exclusions>
                 <exclusion>
-                    <groupId>org.redisson</groupId>
-                    <artifactId>redisson-spring-data-31</artifactId>
-                </exclusion>
-                <exclusion>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-actuator</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-
-        <!-- 修复  CVE-2023-42809 -->
-        <dependency>
-            <groupId>org.redisson</groupId>
-            <artifactId>redisson-spring-data-27</artifactId>
         </dependency>
 
         <!--Lettuce pool 缓存连接池-->

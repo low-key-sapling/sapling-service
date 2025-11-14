@@ -11,7 +11,7 @@ import com.sapling.module.system.infrastructure.config.KafkaTopicMappingConfig;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 /**
  * Kafka消息发送服务实现

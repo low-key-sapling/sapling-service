@@ -311,7 +311,7 @@ Authentication failed: Invalid username or password
 
 **错误信息**:
 ```
-javax.net.ssl.SSLHandshakeException: 
+jakarta.net.ssl.SSLHandshakeException: 
 sun.security.validator.ValidatorException: PKIX path building failed
 ```
 
@@ -324,7 +324,7 @@ sun.security.validator.ValidatorException: PKIX path building failed
 
 **错误信息**:
 ```
-javax.net.ssl.SSLPeerUnverifiedException: 
+jakarta.net.ssl.SSLPeerUnverifiedException: 
 Host name 'kafka-server' does not match the certificate subject
 ```
 

@@ -6,7 +6,7 @@ import com.sapling.module.system.app.biz.dataTransform.executor.DataTransformExe
 import com.sapling.module.system.domain.biz.transform.gateway.TransformGateway;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 /**
  * MBWS文件判断消息处理服务

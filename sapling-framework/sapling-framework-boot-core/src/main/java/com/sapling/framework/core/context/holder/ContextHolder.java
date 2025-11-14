@@ -10,8 +10,8 @@ import java.util.Objects;
 import java.util.UUID;
 
 /**
- * @Description: 全链路追踪上下文
  * @author Artisan
+ * @Description: 全链路追踪上下文
  */
 public class ContextHolder {
 
@@ -59,7 +59,7 @@ public class ContextHolder {
          * 开启时间
          */
         private Long startTime;
-         /**
+        /**
          * 客户端IP
          */
         private String clientIp;

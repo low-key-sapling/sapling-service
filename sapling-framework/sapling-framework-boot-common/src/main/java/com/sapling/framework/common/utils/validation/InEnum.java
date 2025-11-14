@@ -1,9 +1,10 @@
 package com.sapling.framework.common.utils.validation;
 
 import com.sapling.framework.common.core.IntArrayValuable;
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
+
 import java.lang.annotation.*;
 
 @Target({

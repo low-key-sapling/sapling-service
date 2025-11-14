@@ -5,7 +5,7 @@ import com.sapling.module.system.infrastructure.common.constants.RedisKeyConstan
 import com.sapling.module.system.infrastructure.gatewayImpl.SysParamGateWayImpl;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 /**
  * 系统参数Redis通道消息监听器

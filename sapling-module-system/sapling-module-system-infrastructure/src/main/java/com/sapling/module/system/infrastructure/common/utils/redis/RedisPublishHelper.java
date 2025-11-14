@@ -3,7 +3,7 @@ package com.sapling.module.system.infrastructure.common.utils.redis;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 /**
  * Redis Publish Helper

@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import com.sapling.module.system.infrastructure.common.slot.SystemContext;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 /**
  * Executor for running the LiteFlow chain: dataTransformScriptChain

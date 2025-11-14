@@ -57,21 +57,19 @@
             <artifactId>tlog-all-spring-boot-starter</artifactId>
         </dependency>
 
+        <!-- Spring Boot 3.x 已包含 Spring Framework 6.x，无需单独引入 -->
+        <!-- 如需自定义版本，请使用 Maven 依赖管理而非 system scope -->
+        <!--
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>5.3.39</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/lib/spring-webmvc-5.3.39.jar</systemPath>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>5.3.39</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/lib/spring-web-5.3.39.jar</systemPath>
         </dependency>
+        -->
 
 
     </dependencies>
@@ -85,10 +83,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.7.18</version> <!-- 如果 spring.boot.version 版本修改，则这里也要跟着修改 -->
-                <configuration>
-                    <fork>true</fork>
-                </configuration>
+                <version>3.2.5</version> <!-- 如果 spring.boot.version 版本修改，则这里也要跟着修改 -->
                 <executions>
                     <execution>
                         <goals>

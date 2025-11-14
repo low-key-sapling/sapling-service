@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import com.sapling.module.system.domain.biz.transform.gateway.TransformGateway;
 import com.sapling.module.system.infrastructure.common.slot.SystemContext;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 /**
  * LiteFlow 节点：发送 Kafka 消息（支持批量）

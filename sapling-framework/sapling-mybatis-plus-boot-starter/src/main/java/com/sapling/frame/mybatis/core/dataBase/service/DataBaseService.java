@@ -5,7 +5,7 @@ package com.sapling.frame.mybatis.core.dataBase.service;
 import com.sapling.frame.mybatis.core.result.TableResult;
 import com.sapling.frame.mybatis.core.result.ColumnsResult;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.util.List;
 
 /**

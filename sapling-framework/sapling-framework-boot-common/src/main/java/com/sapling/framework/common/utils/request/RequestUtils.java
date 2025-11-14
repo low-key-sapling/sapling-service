@@ -3,12 +3,12 @@ package com.sapling.framework.common.utils.request;
 import com.sapling.framework.common.exception.BasicException;
 import com.sapling.framework.common.exception.PrintExceptionInfo;
 import com.sapling.framework.common.exception.enums.AppHttpStatus;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;

@@ -2,9 +2,10 @@ package com.sapling.framework.common.utils.validation;
 
 
 import com.sapling.framework.common.core.IntArrayValuable;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;

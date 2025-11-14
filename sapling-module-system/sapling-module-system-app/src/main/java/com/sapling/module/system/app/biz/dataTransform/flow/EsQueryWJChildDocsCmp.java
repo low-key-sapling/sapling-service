@@ -9,7 +9,7 @@ import com.sapling.module.system.client.biz.host.dto.ChkHostDto;
 import com.sapling.module.system.domain.biz.transform.gateway.TransformGateway;
 import com.sapling.module.system.infrastructure.common.slot.SystemContext;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

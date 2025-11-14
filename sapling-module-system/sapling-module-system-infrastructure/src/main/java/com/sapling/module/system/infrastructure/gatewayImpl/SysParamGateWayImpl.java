@@ -16,8 +16,8 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.Resource;
 import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 

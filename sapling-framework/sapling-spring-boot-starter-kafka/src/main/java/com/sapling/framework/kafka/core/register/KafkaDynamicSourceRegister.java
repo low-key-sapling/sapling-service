@@ -6,6 +6,7 @@ import com.sapling.framework.kafka.core.properties.ZfKafkaConsumer;
 import com.sapling.framework.kafka.core.properties.ZfKafkaProducer;
 import com.sapling.framework.kafka.core.properties.ZfKafkaProperties;
 import com.sapling.framework.kafka.core.properties.ZfKafkaSecurity;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -29,7 +30,6 @@ import org.springframework.kafka.listener.ContainerProperties;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
